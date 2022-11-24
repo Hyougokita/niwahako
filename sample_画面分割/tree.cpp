@@ -126,18 +126,18 @@ void UninitTree(void)
 //=============================================================================
 void UpdateTree(void)
 {
-	g_lifeCnt++;
+	//g_lifeCnt++;
 
 	for(int nCntTree = 0; nCntTree < MAX_TREE; nCntTree++)
 	{
 		if(g_aTree[nCntTree].bUse)
 		{
-			g_aTree[nCntTree].life--;
-			if (g_aTree[nCntTree].life <= 0)
-			{
-				g_aTree[nCntTree].bUse = false;
-				ReleaseShadow(g_aTree[nCntTree].nIdxShadow);
-			}
+			//g_aTree[nCntTree].life--;
+			//if (g_aTree[nCntTree].life <= 0)
+			//{
+			//	g_aTree[nCntTree].bUse = false;
+			//	ReleaseShadow(g_aTree[nCntTree].nIdxShadow);
+			//}
 
 
 			// ‰e‚ÌˆÊ’uÝ’è
@@ -145,19 +145,19 @@ void UpdateTree(void)
 		}
 	}
 
-	if (g_lifeCnt % 5 == 0)
-	{
+	//if (g_lifeCnt % 5 == 0)
+	//{
 
 
-		int X = rand() % 50 - 25;
-		int Y = rand() % 50;
-		int Z = rand() % 25 + 50;
-		int R = rand() % 10;
-		int G = rand() % 10;
-		int B = rand() % 10;
+	//	int X = rand() % 50 - 25;
+	//	int Y = rand() % 50;
+	//	int Z = rand() % 25 + 50;
+	//	int R = rand() % 10;
+	//	int G = rand() % 10;
+	//	int B = rand() % 10;
 
-		SetTree(XMFLOAT3(10.0f * X, 0.0f, 8.0f * Z), 60.0f, 90.0f, XMFLOAT4(0.1f * R, 0.1f * G, 0.1f * B, 1.0f));
-	}
+	//	SetTree(XMFLOAT3(10.0f * X, 0.0f, 8.0f * Z), 60.0f, 90.0f, XMFLOAT4(0.1f * R, 0.1f * G, 0.1f * B, 1.0f));
+	//}
 
 
 
