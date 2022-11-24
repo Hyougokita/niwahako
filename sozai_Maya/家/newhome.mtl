@@ -1,0 +1,344 @@
+newmtl Kit_Window_Upper_Straight3:Dark_Red_Roof
+illum 4
+Kd 0.42 0.18 0.12
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl Kit_Window_Upper_Straight3:Red_Roof
+illum 4
+Kd 0.58 0.27 0.19
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl Kit_Window_Upper_Straight3:Stucco
+illum 4
+Kd 0.94 0.89 0.82
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl Kit_Window_Upper_Straight3:Wood_Darker
+illum 4
+Kd 0.38 0.31 0.25
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl Prop_Barrel_6:Iron_Grey
+illum 4
+Kd 0.43 0.42 0.39
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl Prop_Barrel_6:Wood_Dark
+illum 4
+Kd 0.52 0.42 0.33
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl Prop_Barrel_6:Wood_Medium
+illum 4
+Kd 0.63 0.53 0.40
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl Prop_Cart_1_Barrels1:Iron_Grey
+illum 4
+Kd 0.43 0.42 0.39
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl Prop_Cart_1_Barrels1:Wood_Dark
+illum 4
+Kd 0.52 0.42 0.33
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl Prop_Cart_1_Barrels1:Wood_Darker
+illum 4
+Kd 0.38 0.31 0.25
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl Prop_Cart_1_Barrels1:Wood_Light
+illum 4
+Kd 0.74 0.63 0.46
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl Prop_Cart_1_Barrels1:Wood_Medium
+illum 4
+Kd 0.63 0.53 0.40
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl Prop_Lamp_Street2:Candlelight
+illum 4
+Kd 1.00 0.88 0.53
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl Prop_Lamp_Street2:Iron_Grey
+illum 4
+Kd 0.43 0.42 0.39
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl Prop_Lamp_Street2:Iron_Grey___Dark
+illum 4
+Kd 0.30 0.29 0.27
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl Prop_Lamp_Street2:Wood_Dark
+illum 4
+Kd 0.52 0.42 0.33
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl Prop_Lamp_Street2:Wood_Darker
+illum 4
+Kd 0.38 0.31 0.25
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl Roof_Accent_Rake_Straight3:Wood_Darker
+illum 4
+Kd 0.38 0.31 0.25
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl Roof_Prop_Chimney_Stone3:Stone_Brit_Gray
+illum 4
+Kd 0.49 0.42 0.37
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl Roof_Prop_Chimney_Stone3:Stone_Brit_Gray_Light
+illum 4
+Kd 0.57 0.49 0.43
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl Roof_Straight_Corner_Inner1:Dark_Red_Roof
+illum 4
+Kd 0.42 0.18 0.12
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl Roof_Straight_Corner_Inner1:Red_Roof
+illum 4
+Kd 0.58 0.27 0.19
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl Roof_Straight_Corner_Inner1:Stucco
+illum 4
+Kd 0.94 0.89 0.82
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl Roof_Straight_Side_Eave5:Dark_Red_Roof
+illum 4
+Kd 0.42 0.18 0.12
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl Roof_Straight_Side_Eave5:Red_Roof
+illum 4
+Kd 0.58 0.27 0.19
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl Roof_Straight_Side_Eave5:Stucco
+illum 4
+Kd 0.94 0.89 0.82
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl Roof_Straight_Side_Eave_Edge5:Dark_Red_Roof
+illum 4
+Kd 0.42 0.18 0.12
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl Roof_Straight_Side_Eave_Edge5:Red_Roof
+illum 4
+Kd 0.58 0.27 0.19
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl Roof_Straight_Side_Eave_Edge5:Stucco
+illum 4
+Kd 0.94 0.89 0.82
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl Roof_Straight_Side_Eave_Edge5:Wood_Darker
+illum 4
+Kd 0.38 0.31 0.25
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl Stucco_Block1:Stucco
+illum 4
+Kd 0.94 0.89 0.82
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl Stucco_Doorway_Wide_Tall:Stucco
+illum 4
+Kd 0.94 0.89 0.82
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl Stucco_Doorway_Wide_Tall:Wood_Darker
+illum 4
+Kd 0.38 0.31 0.25
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl Stucco_Window_Rounded_Wide1:Stucco
+illum 4
+Kd 0.94 0.89 0.82
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl Stucco_Window_Rounded_Wide1:Window
+illum 4
+Kd 0.66 0.71 0.78
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl Stucco_Window_Rounded_Wide1:Wood_Darker
+illum 4
+Kd 0.38 0.31 0.25
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl Stucco_Window_Rounded_Wide2:Stucco
+illum 4
+Kd 0.94 0.89 0.82
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl Stucco_Window_Rounded_Wide2:Window
+illum 4
+Kd 0.66 0.71 0.78
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl Stucco_Window_Rounded_Wide2:Wood_Darker
+illum 4
+Kd 0.38 0.31 0.25
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl Wall_Prop_Sign_1:Iron_Grey
+illum 4
+Kd 0.43 0.42 0.39
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl Wall_Prop_Sign_1:Wood_Dark
+illum 4
+Kd 0.52 0.42 0.33
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl Wall_Prop_Sign_1:Wood_Darker
+illum 4
+Kd 0.38 0.31 0.25
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl Wall_Prop_Sign_1:Wood_Medium
+illum 4
+Kd 0.63 0.53 0.40
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
