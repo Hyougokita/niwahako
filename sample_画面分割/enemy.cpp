@@ -16,7 +16,7 @@
 //*****************************************************************************
 // マクロ定義
 //*****************************************************************************
-#define	MODEL_ENEMY			"data/MODEL/enemy.obj"		// 読み込むモデル名
+#define	MODEL_ENEMY			"data/MODEL/others.obj"		// 読み込むモデル名
 
 #define	VALUE_MOVE			(5.0f)						// 移動量
 #define	VALUE_ROTATE		(XM_PI * 0.02f)				// 回転量
@@ -68,6 +68,10 @@ HRESULT InitEnemy(void)
 
 	}
 
+	g_Enemy[0].scl = XMFLOAT3(10.0f, 10.0f, 10.0f);
+	g_Enemy[0].use = true;		// true:生きてる
+
+
 	return S_OK;
 }
 
@@ -94,49 +98,6 @@ void UninitEnemy(void)
 void UpdateEnemy(void)
 {
 	PLAYER* player = GetPlayer();
-
-	// エネミーを動かす場合は、影も合わせて動かす事を忘れないようにね！
-	for (int i = 0; i < MAX_ENEMY; i++)
-	{
-		if (g_Enemy[i].use == false)	continue;
-
-		float len = sqrt(pow(g_Enemy[i].pos.x - player->pos.x, 2) + pow(g_Enemy[i].pos.z - player->pos.z, 2));
-
-		switch (g_Enemy[i].type)
-		{
-		case 0:
-			// 追いかける
-			if (g_Enemy[i].pos.z < player->pos.z)
-				g_Enemy[i].rot.y = XM_PI * 0.5 + acos((g_Enemy[i].pos.x - player->pos.x) / len);
-			else
-				g_Enemy[i].rot.y = XM_PI * 0.5 - acos((g_Enemy[i].pos.x - player->pos.x) / len);
-
-			g_Enemy[i].pos.x -= 0.5f * sinf(g_Enemy[i].rot.y);
-			g_Enemy[i].pos.z -= 0.5f * cosf(g_Enemy[i].rot.y);
-
-			break;
-
-		case 1:
-
-			// 逃げる
-			if (g_Enemy[i].pos.z < player->pos.z)
-				g_Enemy[i].rot.y = XM_PI * 1.5 + acos((g_Enemy[i].pos.x - player->pos.x) / len);
-			else
-				g_Enemy[i].rot.y = XM_PI * 1.5 - acos((g_Enemy[i].pos.x - player->pos.x) / len);
-
-			g_Enemy[i].pos.x -= 0.5f * sinf(g_Enemy[i].rot.y);
-			g_Enemy[i].pos.z -= 0.5f * cosf(g_Enemy[i].rot.y);
-			break;
-		}
-
-		// 影もエネミーの位置に合わせる
-		XMFLOAT3 pos = g_Enemy[i].pos;
-		pos.y -= (ENEMY_OFFSET_Y - 0.1f);
-		SetPositionShadow(g_Enemy[i].shadowIdx, pos);
-
-	}
-
-
 
 #ifdef _DEBUG
 

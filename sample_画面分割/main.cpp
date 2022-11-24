@@ -333,6 +333,9 @@ void Uninit(void)
 void Update(void)
 {
 	// 入力の更新処理
+	UpdateLight();
+
+	// 入力の更新処理
 	UpdateInput();
 
 	// フェードの更新処理
@@ -362,8 +365,8 @@ void Update(void)
 	// 影の更新処理
 	UpdateShadow();
 
-	// 当たり判定
-	CheckHit();
+	//// 当たり判定
+	//CheckHit();
 
 	// スコアの更新処理
 	UpdateScore();
@@ -383,10 +386,7 @@ void Draw(void)
 		//pos.y = 0.0f;			// カメラ酔いを防ぐためにクリアしている
 
 		// カメラ注視点の設定
-		if (GetCamAT()->use)
-			GetCamera()->at = pos;
-		else
-			SetCameraAT(pos);
+		GetCamera()->at = pos;
 
 		SetCamera();
 
