@@ -74,6 +74,7 @@ struct LIGHT {
 	float		Attenuation;// 減衰率
 	int			Type;		// ライト種別・有効フラグ
 	int			Enable;		// ライト種別・有効フラグ
+	float		degree;		// Z軸周りの回転角度
 };
 
 // フォグ構造体

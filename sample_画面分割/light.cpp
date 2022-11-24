@@ -6,7 +6,7 @@
 //=============================================================================
 #include "main.h"
 #include "renderer.h"
-
+#include "debugproc.h"
 //*****************************************************************************
 // マクロ定義
 //*****************************************************************************
@@ -16,8 +16,9 @@
 //*****************************************************************************
 // プロトタイプ宣言
 //*****************************************************************************
-
-
+float DtoR(float degree);
+XMFLOAT3 RotZ(struct LIGHT* light);
+XMFLOAT3 NorLightDir(struct LIGHT* light);
 //*****************************************************************************
 // グローバル変数
 //*****************************************************************************
@@ -30,6 +31,8 @@ static	BOOL	g_FogEnable = false;
 static int		colChangeCnt;
 static int		sunMoveCnt;
 
+int lightCount = 0;
+#define LIGHT_PADDING	(30)
 
 //=============================================================================
 // 初期化処理
@@ -51,13 +54,21 @@ void InitLight(void)
 	}
 
 	// 並行光源の設定（世界を照らす光）
-	g_Light[0].Position = XMFLOAT3(0.0f, 100.0f, 0.0f);
-	g_Light[0].Direction = XMFLOAT3( 0.0f, -1.0f, 0.0f );		// 光の向き
+	g_Light[0].Position = XMFLOAT3(0.0f, 50.0f, 0.0f);
+	g_Light[0].Direction = NorLightDir(&g_Light[0]);		// 光の向き
 	g_Light[0].Diffuse   = XMFLOAT4( 1.0f, 1.0f, 1.0f, 1.0f );	// 光の色
 	g_Light[0].Type = LIGHT_TYPE_DIRECTIONAL;					// 並行光源
 	g_Light[0].Enable = true;									// このライトをON
 	SetLight(0, &g_Light[0]);									// これで設定している
 
+	// ポイントライトの設定
+	//g_Light[1].Position = XMFLOAT3(0.0f, 300.0f, 0.0f);
+	//g_Light[1].Diffuse = XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f);
+	//g_Light[1].Type = LIGHT_TYPE_POINT;
+	//g_Light[1].degree = DtoR(10.0f);
+	//g_Light[1].Enable = true;
+	//g_Light[1].Attenuation = 550.0f;
+	//SetLight(1, &g_Light[1]);
 
 
 	// フォグの初期化（霧の効果）
@@ -77,6 +88,14 @@ void InitLight(void)
 //=============================================================================
 void UpdateLight(void)
 {
+	lightCount++;
+	if (lightCount >= LIGHT_PADDING) {
+		lightCount = 0;
+		g_Light[0].degree += 0.1f;
+		g_Light[0].Position = RotZ(&g_Light[0]);
+		g_Light[0].Direction = NorLightDir(&g_Light[0]);
+		SetLight(0, &g_Light[0]);
+	}
 	//colChangeCnt++;
 
 	//if (colChangeCnt % 10 == 0)
@@ -107,6 +126,13 @@ void UpdateLight(void)
 	//		//g_Light[1].Position.y = sinf(sunMoveCnt * XM_PI / 180) * 800;
 	//	}
 	//}
+
+#ifdef _DEBUG	// デバッグ情報を表示する
+	PrintDebugProc("Light Direction X:%f,Y:%f,Z:%f\n",
+		g_Light[0].Direction.x, g_Light[0].Direction.y, g_Light[0].Direction.z);
+	PrintDebugProc("Light Position X:%f,Y:%f,Z:%f\n",
+		g_Light[0].Position.x, g_Light[0].Position.y, g_Light[0].Position.z);
+#endif
 }
 
 
@@ -141,4 +167,34 @@ BOOL	GetFogEnable(void)
 }
 
 
+float DtoR(float degree) {
+	return (3.14 / 180) * degree;
+}
 
+
+XMFLOAT3 RotZ(struct LIGHT* light) {
+	XMFLOAT3 newPos;
+	float radian = DtoR(light->degree);
+	newPos.x = light->Position.x;
+	newPos.y = cosf(radian) * light->Position.y - sinf(radian) * light->Position.z;
+	newPos.z = sinf(radian) * light->Position.y + cosf(radian) * light->Position.z;
+	return newPos;
+}
+
+
+//　並行ライトの正規化
+XMFLOAT3 NorLightDir(struct LIGHT* light) {
+	XMFLOAT3 dir;
+
+	dir.x = 0.0f - light->Position.x;
+	dir.y = 0.0f - light->Position.y;
+	dir.z = 0.0f - light->Position.z;
+
+	float distance = pow(pow(light->Position.x, 2) + pow(light->Position.y, 2) + pow(light->Position.z, 2), 0.5f);
+
+	dir.x /= distance;
+	dir.y /= distance;
+	dir.z /= distance;
+	
+	return dir;
+}
