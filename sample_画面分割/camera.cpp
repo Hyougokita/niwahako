@@ -8,6 +8,7 @@
 #include "input.h"
 #include "camera.h"
 #include "debugproc.h"
+#include "fade.h"
 
 //*****************************************************************************
 // マクロ定義
@@ -30,6 +31,12 @@
 #define	VALUE_ROTATE_CAMERA	(XM_PI * 0.01f)								// カメラの回転量
 
 //*****************************************************************************
+// プロトタイプ宣言
+//*****************************************************************************
+void CameraRotation(XMFLOAT3 CamAT_pos, float Cam_posY, float len, float degPerSec, float degStart, int time);
+void InitCamGrobal(void);
+
+//*****************************************************************************
 // グローバル変数
 //*****************************************************************************
 static CAMERA			g_Camera;		// カメラデータ
@@ -44,12 +51,12 @@ static INTERPOLATION_DATA g_MoveTbl0[] = {
 	//座標									回転率							拡大率							時間
 	// 
 		// 回転
-/*00*/	{ XMFLOAT3(-800.0f, 30.0f, -200.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	360 },
+/*00*/	{ XMFLOAT3(-800.0f, 30.0f, -200.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	359 },
 /*01*/	{ XMFLOAT3(-800.0f, 30.0f, -200.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	1 },
 
 		// 引いてくやつ
-/*02*/	{ XMFLOAT3(-850.0f, 500.0f, 300.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	360 },
-/*03*/	{ XMFLOAT3(-850.0f, 500.0f, -300.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	1 },
+/*02*/	{ XMFLOAT3(-900.0f, 500.0f, -800.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	359 },
+/*03*/	{ XMFLOAT3(-900.0f, 500.0f, -800.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	1 },
 
 /*04*/	
 /*05*/	// 川俯瞰直進？
@@ -175,19 +182,6 @@ void UpdateCamera(void)
 		{
 			g_CamAT.time -= maxNo;				// ０番目にリセットしつつも小数部分を引き継いでいる
 		}
-		switch ((int)g_CamAT.time)
-		{
-		case 0:
-
-			g_CamAT.pos.x = -900.0f;
-			g_CamAT.pos.y = 300.0f;
-			g_CamAT.pos.z = 400.0f;
-			break;
-		default:
-			break;
-		}
-
-
 	}
 
 	{	// 線形補間の処理
@@ -232,12 +226,12 @@ void UpdateCamera(void)
 		switch ((int)g_Camera.time)
 		{
 		case 0:
-			g_MoveCnt++;
+			CameraRotation(XMFLOAT3{ -900.0f, 300.0f, 400.0f }, 300.0f, 500.0f, 5.0f, 120.0f, 360);
 
-			g_Camera.pos.x = g_CamAT.pos.x + g_Camera.len * cos(g_MoveCnt * XM_PI / 180 / 12 + XM_PI * 0.8);	// 一秒に5°回転する
-			g_Camera.pos.z = g_CamAT.pos.z - g_Camera.len * sin(g_MoveCnt * XM_PI / 180 / 12 + XM_PI * 0.8);	// 一秒に5°回転する
-			g_Camera.pos.y = 300.0f;
-
+			break;
+		case 1:
+		case 3:
+			InitCamGrobal();
 			break;
 		}
 
@@ -575,13 +569,27 @@ void SetCameraAT(XMFLOAT3 pos)
 
 }
 
+void InitCamGrobal(void)
+{
+	g_MoveCnt = 0;
+
+}
+
 // 円上にカメラの座標を動かす
-void CameraRotation(XMFLOAT3 CamAT_pos, float len, float deg)
+void CameraRotation(XMFLOAT3 CamAT_pos, float Cam_posY, float len, float degPerSec, float degStart, int time)
 {
 	g_MoveCnt++;
 
-	g_Camera.pos.x = g_CamAT.pos.x + g_Camera.len * cos(g_MoveCnt * XM_PI / 180 / 12 + XM_PI * 0.8);	// 一秒に5°回転する
-	g_Camera.pos.z = g_CamAT.pos.z - g_Camera.len * sin(g_MoveCnt * XM_PI / 180 / 12 + XM_PI * 0.8);	// 一秒に5°回転する
-	g_Camera.pos.y = 300.0f;
+	// カメラの注視点を設定
+	g_CamAT.pos = CamAT_pos;
 
+	g_Camera.pos.x = CamAT_pos.x + g_Camera.len * cos(g_MoveCnt * XM_PI / 10800 * degPerSec + XM_PI /180 * degStart);	// 一秒にdeg°回転する
+	g_Camera.pos.z = CamAT_pos.z - g_Camera.len * sin(g_MoveCnt * XM_PI / 10800 * degPerSec + XM_PI /180 * degStart);	// 一秒にdeg°回転する
+	g_Camera.pos.y = Cam_posY;
+
+	if (g_MoveCnt + 50 == time)
+		SetFade(FADE_OUT);
+	if (g_MoveCnt == time)
+		InitCamGrobal();
 }
+

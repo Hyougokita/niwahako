@@ -21,6 +21,7 @@
 #include "bullet.h"
 #include "score.h"
 #include "sound.h"
+#include "fade.h"
 
 //*****************************************************************************
 // マクロ定義
@@ -221,6 +222,8 @@ HRESULT Init(HINSTANCE hInstance, HWND hWnd, BOOL bWindow)
 
 	InitCamera();
 
+	InitFade();
+
 	// 入力処理の初期化
 	InitInput(hInstance, hWnd);
 
@@ -284,6 +287,9 @@ HRESULT Init(HINSTANCE hInstance, HWND hWnd, BOOL bWindow)
 //=============================================================================
 void Uninit(void)
 {
+	// フェードの終了処理
+	UninitFade();
+
 	// サウンドの終了処理
 	UninitSound();
 
@@ -328,6 +334,9 @@ void Update(void)
 {
 	// 入力の更新処理
 	UpdateInput();
+
+	// フェードの更新処理
+	UpdateFade();
 
 	// カメラ更新
 	UpdateCamera();
@@ -412,6 +421,8 @@ void Draw(void)
 
 			// スコアの描画処理
 			DrawScore();
+
+			DrawFade();
 
 			// ライト・Z比較有効
 			SetLightEnable(true);
