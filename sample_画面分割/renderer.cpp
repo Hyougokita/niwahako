@@ -744,7 +744,10 @@ void UninitRenderer(void)
 void Clear(void)
 {
 	// バックバッファクリア
-	float ClearColor[4] = { 0.3f, 0.3f, 0.3f, 1.0f };	// 所謂背景色
+
+	// 背景色の変更
+	float ClearColor[4] = { 0.4f, 0.6f, 0.9f, 1.0f };	// 
+	//float ClearColor[4] = { 0.3f, 0.3f, 0.3f, 1.0f };	// グレー
 	g_ImmediateContext->ClearRenderTargetView( g_RenderTargetView, ClearColor );
 	g_ImmediateContext->ClearDepthStencilView( g_DepthStencilView, D3D11_CLEAR_DEPTH, 1.0f, 0);
 }

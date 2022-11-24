@@ -27,6 +27,9 @@ static FOG		g_Fog;
 
 static	BOOL	g_FogEnable = false;
 
+static int		colChangeCnt;
+static int		sunMoveCnt;
+
 
 //=============================================================================
 // 初期化処理
@@ -64,6 +67,8 @@ void InitLight(void)
 	SetFog(&g_Fog);
 	SetFogEnable(g_FogEnable);		// 他の場所もチェックする shadow
 
+	colChangeCnt = 0;
+	sunMoveCnt = 0;
 }
 
 
@@ -72,9 +77,36 @@ void InitLight(void)
 //=============================================================================
 void UpdateLight(void)
 {
+	//colChangeCnt++;
 
+	//if (colChangeCnt % 10 == 0)
+	//{
 
+	//	if (colChangeCnt % 3600 == 1080)
+	//	{
+	//		g_Light[0].Diffuse = XMFLOAT4{0.2f, 0.2f, 0.2f, 1.0f};
+	//		SetLight(0, &g_Light[0]);
 
+	//		// 点光源の設定
+	//		g_Light[1].Position = XMFLOAT3(-200.0f, 0.0f, 0.0f);
+	//		g_Light[1].Direction = XMFLOAT3(0.0f, -1.0f, -1.0f);		// 光の向き
+	//		g_Light[1].Diffuse = XMFLOAT4(1.0f, 0.8f, 0.6f, 1.0f);	// 光の色
+	//		g_Light[1].Type = LIGHT_TYPE_POINT;						// 並行光源
+	//		g_Light[1].Enable = true;								// このライトをON
+	//		SetLight(1, &g_Light[1]);								// これで設定している
+	//	}
+	//	if (colChangeCnt % 3600 > 1080)
+	//	{
+	//		sunMoveCnt++;
+	//		g_Light[0].Diffuse.x += 0.01f;	// R
+	//		g_Light[0].Diffuse.y += 0.01f;	// G
+	//		g_Light[0].Diffuse.z += 0.01f;	// B
+	//		SetLight(0, &g_Light[0]);
+
+	//		//g_Light[1].Position.x = cosf(sunMoveCnt * XM_PI / 180 + XM_PI) * 800;
+	//		//g_Light[1].Position.y = sinf(sunMoveCnt * XM_PI / 180) * 800;
+	//	}
+	//}
 }
 
 

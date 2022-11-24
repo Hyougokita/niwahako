@@ -50,18 +50,24 @@ static int				g_MoveCnt;		// カウンタ
 static INTERPOLATION_DATA g_MoveTbl0[] = {
 	//座標									回転率							拡大率							時間
 	// 
-		// 回転
-/*00*/	{ XMFLOAT3(-800.0f, 30.0f, -200.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	359 },
-/*01*/	{ XMFLOAT3(-800.0f, 30.0f, -200.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	1 },
+		// カメラ座標固定＋注視点回転
+/*00*/	{ XMFLOAT3(-900.0f, 500.0f, -800.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	359 },
+/*01*/	{ XMFLOAT3(-900.0f, 500.0f, -800.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	1 },
 
-		// 引いてくやつ
-/*02*/	{ XMFLOAT3(-900.0f, 500.0f, -800.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	359 },
-/*03*/	{ XMFLOAT3(-900.0f, 500.0f, -800.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	1 },
+		// 注視点固定＋カメラ座標回転
+/*02*/	{ XMFLOAT3(900.0f, 30.0f, -200.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	359 },
+/*03*/	{ XMFLOAT3(780.0f, 30.0f, -200.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	1 },
 
-/*04*/	
-/*05*/	// 川俯瞰直進？
-/*06*/	{ XMFLOAT3(-150.0f, 50.0f, -250.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(0.0f, 0.0f, 1.0f),	360 },
-/*07*/	{ XMFLOAT3(100.0f, 10.0f, 0.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	200 },
+		// 川・橋下直進
+/*04*/	{ XMFLOAT3(-150.0f, 220.0f, -1200.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(0.0f, 0.0f, 1.0f),	359 },
+/*05*/	{ XMFLOAT3(-150.0f, 120.0f, 300.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	1 },
+
+/*06*/	{ XMFLOAT3(-150.0f, 120.0f, 300.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	59 },
+/*07*/	{ XMFLOAT3(-150.0f, 120.0f, 300.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	1 },
+
+		// 日の出タイムラプス
+/*06*/	{ XMFLOAT3(-200.0f, 500.0f, -800.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	899 },
+/*07*/	{ XMFLOAT3(-200.0f, 500.0f, -800.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	1 },
 
 };
 
@@ -70,16 +76,23 @@ static INTERPOLATION_DATA g_MoveTbl1[] = {
 	//座標									回転率							拡大率							時間
 
 	// 回転
-	{ XMFLOAT3(0.0f, 30.0f, 0.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),		XMFLOAT3(2.0f, 2.0f, 1.0f),	360 },
-	{ XMFLOAT3(0.0f, 30.0f, 0.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),		XMFLOAT3(2.0f, 2.0f, 1.0f),	1 },
+	{ XMFLOAT3(-500.0f, 400.0f, 500.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),		XMFLOAT3(2.0f, 2.0f, 1.0f),	359 },
+	{ XMFLOAT3(500.0f, 300.0f, -600.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),		XMFLOAT3(2.0f, 2.0f, 1.0f),	1 },
 
-	// 引いてくやつ
-	{ XMFLOAT3(-800.0f, 400.0f, 400.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),		XMFLOAT3(2.0f, 2.0f, 1.0f),	360 },
-	{ XMFLOAT3(-800.0f, 400.0f, 400.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),		XMFLOAT3(2.0f, 2.0f, 1.0f),	1 },
+	// 回転
+	{ XMFLOAT3(0.0f, 30.0f, 0.0f),			XMFLOAT3(0.0f, 0.0f, 0.0f),		XMFLOAT3(2.0f, 2.0f, 1.0f),	359 },
+	{ XMFLOAT3(0.0f, 30.0f, 0.0f),			XMFLOAT3(0.0f, 0.0f, 0.0f),		XMFLOAT3(2.0f, 2.0f, 1.0f),	1 },
 
 	// 川俯瞰
-	{ XMFLOAT3(0.0f, -20.0f, -100.0f),		XMFLOAT3(0.0f, 0.0f, 0.0f),		XMFLOAT3(0.0f, 0.0f, 1.0f),	360 },
-	{ XMFLOAT3(350.0f, -20.0f, 250.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),		XMFLOAT3(2.0f, 2.0f, 1.0f),	200 },
+	{ XMFLOAT3(-150.0f, 50.0f, -500.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),		XMFLOAT3(0.0f, 0.0f, 1.0f),	359 },
+	{ XMFLOAT3(-150.0f, 50.0f, 600.0f),		XMFLOAT3(0.0f, 0.0f, 0.0f),		XMFLOAT3(2.0f, 2.0f, 1.0f),	1 },
+
+	{ XMFLOAT3(-150.0f, 50.0f, -500.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),		XMFLOAT3(0.0f, 0.0f, 1.0f),	59 },
+	{ XMFLOAT3(-150.0f, 50.0f, 600.0f),		XMFLOAT3(0.0f, 0.0f, 0.0f),		XMFLOAT3(2.0f, 2.0f, 1.0f),	1 },
+
+	// 日の出タイムラプス風
+	{ XMFLOAT3(-200.0f, 400.0f, 2000.0f),		XMFLOAT3(0.0f, 0.0f, 0.0f),		XMFLOAT3(0.0f, 0.0f, 1.0f),	899 },
+	{ XMFLOAT3(0.0f, 400.0f, 2000.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),		XMFLOAT3(2.0f, 2.0f, 1.0f),	1 },
 
 };
 
@@ -225,13 +238,27 @@ void UpdateCamera(void)
 
 		switch ((int)g_Camera.time)
 		{
-		case 0:
-			CameraRotation(XMFLOAT3{ -900.0f, 300.0f, 400.0f }, 300.0f, 500.0f, 5.0f, 120.0f, 360);
-
+		case 2:
+			CameraRotation(XMFLOAT3{ 900.0f, 250.0f, 780.0f }, 400.0f, 1000.0f, 6.0f, 100.0f, 360);
 			break;
-		case 1:
-		case 3:
+		case 0:
+		//case 4:
+			g_MoveCnt++;
+			if (g_MoveCnt + 50 == 360)
+				SetFade(FADE_OUT);
+			break;
+		case 6:
+			g_MoveCnt++;
+			if (g_MoveCnt <= 20)
+			{
+				g_Camera.up.x -= 0.01f;
+			}
+			break;
+		case 3: 
+		case 5: 
 			InitCamGrobal();
+			break;
+		default:
 			break;
 		}
 
@@ -583,8 +610,8 @@ void CameraRotation(XMFLOAT3 CamAT_pos, float Cam_posY, float len, float degPerS
 	// カメラの注視点を設定
 	g_CamAT.pos = CamAT_pos;
 
-	g_Camera.pos.x = CamAT_pos.x + g_Camera.len * cos(g_MoveCnt * XM_PI / 10800 * degPerSec + XM_PI /180 * degStart);	// 一秒にdeg°回転する
-	g_Camera.pos.z = CamAT_pos.z - g_Camera.len * sin(g_MoveCnt * XM_PI / 10800 * degPerSec + XM_PI /180 * degStart);	// 一秒にdeg°回転する
+	g_Camera.pos.x = CamAT_pos.x + len * cos(g_MoveCnt * XM_PI / 10800 * degPerSec + XM_PI /180 * degStart);	// 一秒にdeg°回転する
+	g_Camera.pos.z = CamAT_pos.z - len * sin(g_MoveCnt * XM_PI / 10800 * degPerSec + XM_PI /180 * degStart);	// 一秒にdeg°回転する
 	g_Camera.pos.y = Cam_posY;
 
 	if (g_MoveCnt + 50 == time)
@@ -592,4 +619,3 @@ void CameraRotation(XMFLOAT3 CamAT_pos, float Cam_posY, float len, float degPerS
 	if (g_MoveCnt == time)
 		InitCamGrobal();
 }
-

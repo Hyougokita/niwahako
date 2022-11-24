@@ -1,0 +1,32 @@
+newmtl fusya2:Wall_Prop_Windmill_1:Canvas
+illum 4
+Kd 0.80 0.74 0.60
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl fusya2:Wall_Prop_Windmill_1:Wood_Dark
+illum 4
+Kd 0.52 0.42 0.33
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl fusya2:Wall_Prop_Windmill_1:Wood_Darker
+illum 4
+Kd 0.38 0.31 0.25
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl fusya2:Wall_Prop_Windmill_1:Wood_Medium
+illum 4
+Kd 0.63 0.53 0.40
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00

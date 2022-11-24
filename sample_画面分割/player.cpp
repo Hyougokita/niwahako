@@ -18,7 +18,7 @@
 //*****************************************************************************
 // マクロ定義
 //*****************************************************************************
-#define	MODEL_PLAYER		"data/MODEL/niwahako.obj"			// 読み込むモデル名
+#define	MODEL_PLAYER		"data/MODEL/home.obj"			// 読み込むモデル名
 
 #define	VALUE_MOVE			(2.0f)							// 移動量
 #define	VALUE_ROTATE		(XM_PI * 0.02f)					// 回転量

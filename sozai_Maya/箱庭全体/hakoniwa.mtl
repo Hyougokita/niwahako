@@ -1,20 +1,4 @@
-newmtl homedoa:Iron_Grey
-illum 4
-Kd 0.43 0.42 0.39
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-Ni 1.00
-Ks 1.00 1.00 1.00
-Ns 0.00
-newmtl homedoa:Iron_Grey___Dark
-illum 4
-Kd 0.30 0.29 0.27
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-Ni 1.00
-Ks 1.00 1.00 1.00
-Ns 0.00
-newmtl homedoa:Wood_Dark
+newmtl Prop_Boat_1:Wood_Dark
 illum 4
 Kd 0.52 0.42 0.33
 Ka 0.00 0.00 0.00
@@ -22,3 +6,251 @@ Tf 1.00 1.00 1.00
 Ni 1.00
 Ks 1.00 1.00 1.00
 Ns 0.00
+newmtl Prop_Boat_2:Wood_Dark
+illum 4
+Kd 0.52 0.42 0.33
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl Prop_Boat_Oars_3:Wood_Light
+illum 4
+Kd 0.74 0.63 0.46
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl Prop_Well_1:Burlap
+illum 4
+Kd 0.73 0.64 0.52
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl Prop_Well_1:Dark_Red_Roof
+illum 4
+Kd 0.42 0.18 0.12
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl Prop_Well_1:Red_Roof
+illum 4
+Kd 0.58 0.27 0.19
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl Prop_Well_1:Stone_Bri_Gray_Lighter
+illum 4
+Kd 0.66 0.60 0.55
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl Prop_Well_1:Stone_Brit_Gray
+illum 4
+Kd 0.49 0.42 0.37
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl Prop_Well_1:Stone_Brit_Gray_Light
+illum 4
+Kd 0.57 0.49 0.43
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl Prop_Well_1:Wood_Dark
+illum 4
+Kd 0.52 0.42 0.33
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl Prop_Well_1:Wood_Darker
+illum 4
+Kd 0.38 0.31 0.25
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl Prop_Well_1:Wood_Medium
+illum 4
+Kd 0.63 0.53 0.40
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl fusya2:Stucco_Block:Stucco
+illum 4
+Kd 0.94 0.89 0.82
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl fusya2:Stucco_Window_Double_Wide:Stucco
+illum 4
+Kd 0.94 0.89 0.82
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl fusya2:Stucco_Window_Double_Wide:Window
+illum 4
+Kd 0.66 0.71 0.78
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl fusya2:Stucco_Window_Double_Wide:Wood_Darker
+illum 4
+Kd 0.38 0.31 0.25
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl fusya2:newhome1:Dark_Red_Roof4
+illum 4
+Kd 0.42 0.18 0.12
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl fusya2:newhome1:Dark_Red_Roof6
+illum 4
+Kd 0.42 0.18 0.12
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl fusya2:newhome1:Red_Roof4
+illum 4
+Kd 0.58 0.27 0.19
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl fusya2:newhome1:Red_Roof6
+illum 4
+Kd 0.58 0.27 0.19
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl fusya2:newhome1:Stucco6
+illum 4
+Kd 0.94 0.89 0.82
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl fusya2:newhome1:Stucco8
+illum 4
+Kd 0.94 0.89 0.82
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl fusya2:newhome1:Wood_Darker
+illum 4
+Kd 0.38 0.31 0.25
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl fusya2:newhome1:Wood_Darker4
+illum 4
+Kd 0.38 0.31 0.25
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl fusya2:newhome2:Dark_Red_Roof2
+illum 4
+Kd 0.42 0.18 0.12
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl fusya2:newhome2:Red_Roof2
+illum 4
+Kd 0.58 0.27 0.19
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl fusya2:newhome2:Stucco4
+illum 4
+Kd 0.94 0.89 0.82
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl lambert2SG
+illum 4
+Kd 0.07 0.16 0.07
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl lambert4SG
+illum 4
+Kd 0.10 0.06 0.04
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl lambert5SG
+illum 4
+Kd 0.01 0.06 0.01
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl lambert6SG
+illum 4
+Kd 0.23 0.23 0.23
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl phong1SG
+illum 4
+Kd 0.14 0.09 0.06
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl phong2SG
+illum 4
+Kd 0.03 0.04 0.20
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
