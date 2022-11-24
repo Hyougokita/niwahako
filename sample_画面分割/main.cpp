@@ -224,28 +224,28 @@ HRESULT Init(HINSTANCE hInstance, HWND hWnd, BOOL bWindow)
 	// 入力処理の初期化
 	InitInput(hInstance, hWnd);
 
-	// フィールドの初期化
-	InitMeshField(XMFLOAT3(0.0f, 0.0f, 0.0f), XMFLOAT3(0.0f, 0.0f, 0.0f), 100, 100, 13.0f, 13.0f);
+	//// フィールドの初期化
+	//InitMeshField(XMFLOAT3(0.0f, 0.0f, 0.0f), XMFLOAT3(0.0f, 0.0f, 0.0f), 100, 100, 13.0f, 13.0f);
 
-	// 壁の初期化
-	InitMeshWall(XMFLOAT3(0.0f, 0.0f, MAP_TOP), XMFLOAT3(0.0f, 0.0f, 0.0f),
-		XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f), 16, 2, 80.0f, 80.0f);
-	InitMeshWall(XMFLOAT3(MAP_LEFT, 0.0f, 0.0f), XMFLOAT3(0.0f, -XM_PI * 0.50f, 0.0f),
-		XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f), 16, 2, 80.0f, 80.0f);
-	InitMeshWall(XMFLOAT3(MAP_RIGHT, 0.0f, 0.0f), XMFLOAT3(0.0f, XM_PI * 0.50f, 0.0f),
-		XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f), 16, 2, 80.0f, 80.0f);
-	InitMeshWall(XMFLOAT3(0.0f, 0.0f, MAP_DOWN), XMFLOAT3(0.0f, XM_PI, 0.0f),
-		XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f), 16, 2, 80.0f, 80.0f);
+	//// 壁の初期化
+	//InitMeshWall(XMFLOAT3(0.0f, 0.0f, MAP_TOP), XMFLOAT3(0.0f, 0.0f, 0.0f),
+	//	XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f), 16, 2, 80.0f, 80.0f);
+	//InitMeshWall(XMFLOAT3(MAP_LEFT, 0.0f, 0.0f), XMFLOAT3(0.0f, -XM_PI * 0.50f, 0.0f),
+	//	XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f), 16, 2, 80.0f, 80.0f);
+	//InitMeshWall(XMFLOAT3(MAP_RIGHT, 0.0f, 0.0f), XMFLOAT3(0.0f, XM_PI * 0.50f, 0.0f),
+	//	XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f), 16, 2, 80.0f, 80.0f);
+	//InitMeshWall(XMFLOAT3(0.0f, 0.0f, MAP_DOWN), XMFLOAT3(0.0f, XM_PI, 0.0f),
+	//	XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f), 16, 2, 80.0f, 80.0f);
 
-	// 壁(裏側用の半透明)
-	InitMeshWall(XMFLOAT3(0.0f, 0.0f, MAP_TOP), XMFLOAT3(0.0f, XM_PI, 0.0f),
-		XMFLOAT4(1.0f, 1.0f, 1.0f, 0.25f), 16, 2, 80.0f, 80.0f);
-	InitMeshWall(XMFLOAT3(MAP_LEFT, 0.0f, 0.0f), XMFLOAT3(0.0f, XM_PI * 0.50f, 0.0f),
-		XMFLOAT4(1.0f, 1.0f, 1.0f, 0.25f), 16, 2, 80.0f, 80.0f);
-	InitMeshWall(XMFLOAT3(MAP_RIGHT, 0.0f, 0.0f), XMFLOAT3(0.0f, -XM_PI * 0.50f, 0.0f),
-		XMFLOAT4(1.0f, 1.0f, 1.0f, 0.25f), 16, 2, 80.0f, 80.0f);
-	InitMeshWall(XMFLOAT3(0.0f, 0.0f, MAP_DOWN), XMFLOAT3(0.0f, 0.0f, 0.0f),
-		XMFLOAT4(1.0f, 1.0f, 1.0f, 0.25f), 16, 2, 80.0f, 80.0f);
+	//// 壁(裏側用の半透明)
+	//InitMeshWall(XMFLOAT3(0.0f, 0.0f, MAP_TOP), XMFLOAT3(0.0f, XM_PI, 0.0f),
+	//	XMFLOAT4(1.0f, 1.0f, 1.0f, 0.25f), 16, 2, 80.0f, 80.0f);
+	//InitMeshWall(XMFLOAT3(MAP_LEFT, 0.0f, 0.0f), XMFLOAT3(0.0f, XM_PI * 0.50f, 0.0f),
+	//	XMFLOAT4(1.0f, 1.0f, 1.0f, 0.25f), 16, 2, 80.0f, 80.0f);
+	//InitMeshWall(XMFLOAT3(MAP_RIGHT, 0.0f, 0.0f), XMFLOAT3(0.0f, -XM_PI * 0.50f, 0.0f),
+	//	XMFLOAT4(1.0f, 1.0f, 1.0f, 0.25f), 16, 2, 80.0f, 80.0f);
+	//InitMeshWall(XMFLOAT3(0.0f, 0.0f, MAP_DOWN), XMFLOAT3(0.0f, 0.0f, 0.0f),
+	//	XMFLOAT4(1.0f, 1.0f, 1.0f, 0.25f), 16, 2, 80.0f, 80.0f);
 
 	// 影の初期化処理
 	InitShadow();
@@ -268,7 +268,7 @@ HRESULT Init(HINSTANCE hInstance, HWND hWnd, BOOL bWindow)
 	// サウンドの初期化処理
 	InitSound(hWnd);
 
-	PlaySound(SOUND_LABEL_BGM_sample002);
+	PlaySound(SOUND_LABEL_BGM_Pride);
 
 	// ライトを有効化
 	SetLightEnable(true);
@@ -306,10 +306,10 @@ void Uninit(void)
 	UninitShadow();
 
 	// 壁の終了処理
-	UninitMeshWall();
+	//UninitMeshWall();
 
 	// 地面の終了処理
-	UninitMeshField();
+	//UninitMeshField();
 
 	// カメラの終了処理
 	UninitCamera();
@@ -333,10 +333,10 @@ void Update(void)
 	UpdateCamera();
 
 	// 地面処理の更新
-	UpdateMeshField();
+	//UpdateMeshField();
 
 	// 壁処理の更新
-	UpdateMeshWall();
+	//UpdateMeshWall();
 
 	// プレイヤーの更新処理
 	UpdatePlayer();
@@ -368,11 +368,62 @@ void Draw(void)
 	// バックバッファクリア
 	Clear();
 
+	//{
+	//	SetViewPort(TYPE_FULL_SCREEN);
+	//	XMFLOAT3 pos = GetCamAT()->pos;
+	//	pos.y = 0.0f;			// カメラ酔いを防ぐためにクリアしている
+
+	//	// カメラ注視点の設定
+	//	if (GetCamAT()->use)
+	//		GetCamera()->at = pos;
+	//	else
+	//		SetCameraAT(pos);
+
+	//	SetCamera();
+
+	//	// 地面の描画処理
+	//	//DrawMeshField();
+
+	//	// 影の描画処理
+	//	DrawShadow();
+
+	//	// プレイヤーの描画処理
+	//	DrawPlayer();
+
+	//	// エネミーの描画処理
+	//	DrawEnemy();
+
+	//	// 壁の描画処理
+	//	//DrawMeshWall();
+
+	//	// 木の描画処理
+	//	DrawTree();
+
+	//	// バレットの描画処理
+	//	DrawBullet();
+
+	//	// 2D表示用
+	//	{
+	//		// ライト・Z比較無効
+	//		SetLightEnable(false);
+	//		SetDepthEnable(false);
+
+	//		// ↓優先度を自分で決めて枠とかの描画の順番を決める
+
+	//		// スコアの描画処理
+	//		DrawScore();
+
+	//		// ライト・Z比較有効
+	//		SetLightEnable(true);
+	//		SetDepthEnable(true);
+	//	}
+	//}
+
 	// プレイヤー視点
 	{
 		SetViewPort(TYPE_FULL_SCREEN);
-		XMFLOAT3 pos = GetPlayer()->pos;
-		pos.y = 0.0f;			// カメラ酔いを防ぐためにクリアしている
+		//XMFLOAT3 pos = GetPlayer()->pos;
+		//pos.y = 0.0f;			// カメラ酔いを防ぐためにクリアしている
 		//SetCameraAT(pos);
 		SetCamera();
 
@@ -413,52 +464,6 @@ void Draw(void)
 			SetDepthEnable(true);
 		}
 	}
-
-	//// プレイヤー視点
-	//{
-	//	SetViewPort(TYPE_UP_LEFT_SCREEN);
-	//	XMFLOAT3 pos = GetPlayer()->pos;
-	//	pos.y = 0.0f;			// カメラ酔いを防ぐためにクリアしている
-	//	SetCameraAT(pos);
-	//	SetCamera();
-
-	//	// 地面の描画処理
-	//	DrawMeshField();
-
-	//	// 影の描画処理
-	//	DrawShadow();
-
-	//	// プレイヤーの描画処理
-	//	DrawPlayer();
-
-	//	// エネミーの描画処理
-	//	DrawEnemy();
-
-	//	// 壁の描画処理
-	//	DrawMeshWall();
-
-	//	// 木の描画処理
-	//	DrawTree();
-
-	//	// バレットの描画処理
-	//	DrawBullet();
-
-	//	// 2D表示用
-	//	{
-	//		// ライト・Z比較無効
-	//		SetLightEnable(false);
-	//		SetDepthEnable(false);
-
-	//		// ↓優先度を自分で決めて枠とかの描画の順番を決める
-
-	//		// スコアの描画処理
-	//		DrawScore();
-
-	//		// ライト・Z比較有効
-	//		SetLightEnable(true);
-	//		SetDepthEnable(true);
-	//	}
-	//}
 
 	//// バレット視点
 	//{

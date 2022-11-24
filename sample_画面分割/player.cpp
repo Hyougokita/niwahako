@@ -18,7 +18,7 @@
 //*****************************************************************************
 // マクロ定義
 //*****************************************************************************
-#define	MODEL_PLAYER		"data/MODEL/player.obj"			// 読み込むモデル名
+#define	MODEL_PLAYER		"data/MODEL/niwahako.obj"			// 読み込むモデル名
 
 #define	VALUE_MOVE			(2.0f)							// 移動量
 #define	VALUE_ROTATE		(XM_PI * 0.02f)					// 回転量
@@ -46,7 +46,7 @@ HRESULT InitPlayer(void)
 	LoadModel(MODEL_PLAYER, &g_Player.model);
 	g_Player.load = true;
 
-	g_Player.pos = { 0.0f, PLAYER_OFFSET_Y, -100.0f };
+	g_Player.pos = { 0.0f, 0.0f, -100.0f };
 	g_Player.rot = { 0.0f, 0.0f, 0.0f };
 	g_Player.scl = { 1.0f, 1.0f, 1.0f };
 
@@ -88,27 +88,27 @@ void UpdatePlayer(void)
 {
 	CAMERA *cam = GetCamera();
 
-	// 移動させちゃう
-	if (GetKeyboardPress(DIK_LEFT))
-	{	// 左へ移動
-		g_Player.spd = VALUE_MOVE;
-		g_Player.dir = XM_PI / 2;
-	}
-	if (GetKeyboardPress(DIK_RIGHT))
-	{	// 右へ移動
-		g_Player.spd = VALUE_MOVE;
-		g_Player.dir = -XM_PI / 2;
-	}
-	if (GetKeyboardPress(DIK_UP))
-	{	// 上へ移動
-		g_Player.spd = VALUE_MOVE;
-		g_Player.dir = XM_PI;
-	}
-	if (GetKeyboardPress(DIK_DOWN))
-	{	// 下へ移動
-		g_Player.spd = VALUE_MOVE;
-		g_Player.dir = 0.0f;
-	}
+	//// 移動させちゃう
+	//if (GetKeyboardPress(DIK_LEFT))
+	//{	// 左へ移動
+	//	g_Player.spd = VALUE_MOVE;
+	//	g_Player.dir = XM_PI / 2;
+	//}
+	//if (GetKeyboardPress(DIK_RIGHT))
+	//{	// 右へ移動
+	//	g_Player.spd = VALUE_MOVE;
+	//	g_Player.dir = -XM_PI / 2;
+	//}
+	//if (GetKeyboardPress(DIK_UP))
+	//{	// 上へ移動
+	//	g_Player.spd = VALUE_MOVE;
+	//	g_Player.dir = XM_PI;
+	//}
+	//if (GetKeyboardPress(DIK_DOWN))
+	//{	// 下へ移動
+	//	g_Player.spd = VALUE_MOVE;
+	//	g_Player.dir = 0.0f;
+	//}
 
 	if (GetKeyboardPress(DIK_LSHIFT))
 	{
@@ -175,8 +175,8 @@ void UpdatePlayer(void)
 
 
 #ifdef _DEBUG	// デバッグ情報を表示する
-	PrintDebugProc("Player:↑ → ↓ ←　Space\n");
-	PrintDebugProc("Player:X:%f Y:%f Z:%f\n", g_Player.pos.x, g_Player.pos.y, g_Player.pos.z);
+	//PrintDebugProc("Player:↑ → ↓ ←　Space\n");
+	//PrintDebugProc("Player:X:%f Y:%f Z:%f\n", g_Player.pos.x, g_Player.pos.y, g_Player.pos.z);
 #endif
 }
 
