@@ -42,14 +42,19 @@ static int				g_MoveCnt;		// カウンタ
 // カメラ用線形補間移動テーブル
 static INTERPOLATION_DATA g_MoveTbl0[] = {
 	//座標									回転率							拡大率							時間
+	// 
+		// 回転
+/*00*/	{ XMFLOAT3(-800.0f, 30.0f, -200.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	360 },
+/*01*/	{ XMFLOAT3(-800.0f, 30.0f, -200.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	1 },
 
-/*00*/	{ XMFLOAT3(-50.0f, 30.0f, -50.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	360 },
-/*01*/	{ XMFLOAT3(-200.0f, 30.0f, -200.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	200 },
-/*02*/	{ XMFLOAT3(300.0f, 80.0f, 300.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	300 },
-/*03*/	
-/*04*/	// 川俯瞰
-/*05*/	{ XMFLOAT3(-150.0f, 50.0f, -250.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(0.0f, 0.0f, 1.0f),	360 },
-/*06*/	{ XMFLOAT3(100.0f, 10.0f, 0.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	200 },
+		// 引いてくやつ
+/*02*/	{ XMFLOAT3(-850.0f, 500.0f, 300.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	360 },
+/*03*/	{ XMFLOAT3(-850.0f, 500.0f, -300.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	1 },
+
+/*04*/	
+/*05*/	// 川俯瞰直進？
+/*06*/	{ XMFLOAT3(-150.0f, 50.0f, -250.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(0.0f, 0.0f, 1.0f),	360 },
+/*07*/	{ XMFLOAT3(100.0f, 10.0f, 0.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	200 },
 
 };
 
@@ -57,9 +62,13 @@ static INTERPOLATION_DATA g_MoveTbl0[] = {
 static INTERPOLATION_DATA g_MoveTbl1[] = {
 	//座標									回転率							拡大率							時間
 
+	// 回転
 	{ XMFLOAT3(0.0f, 30.0f, 0.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),		XMFLOAT3(2.0f, 2.0f, 1.0f),	360 },
-	{ XMFLOAT3(0.0f, 30.0f, 0.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),		XMFLOAT3(2.0f, 2.0f, 1.0f),	200 },
-	{ XMFLOAT3(325.0f, 50.0f, 300.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),		XMFLOAT3(2.0f, 2.0f, 1.0f),	200 },
+	{ XMFLOAT3(0.0f, 30.0f, 0.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),		XMFLOAT3(2.0f, 2.0f, 1.0f),	1 },
+
+	// 引いてくやつ
+	{ XMFLOAT3(-800.0f, 400.0f, 400.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),		XMFLOAT3(2.0f, 2.0f, 1.0f),	360 },
+	{ XMFLOAT3(-800.0f, 400.0f, 400.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),		XMFLOAT3(2.0f, 2.0f, 1.0f),	1 },
 
 	// 川俯瞰
 	{ XMFLOAT3(0.0f, -20.0f, -100.0f),		XMFLOAT3(0.0f, 0.0f, 0.0f),		XMFLOAT3(0.0f, 0.0f, 1.0f),	360 },
@@ -89,10 +98,11 @@ void InitCamera(void)
 	g_CamAT.use = true;
 
 	// 視点と注視点の距離を計算
-	float vx, vz;
-	vx = g_Camera.pos.x - g_Camera.at.x;
-	vz = g_Camera.pos.z - g_Camera.at.z;
-	g_Camera.len = sqrtf(vx * vx + vz * vz);
+	//float vx, vz;
+	//vx = g_Camera.pos.x - g_Camera.at.x;
+	//vz = g_Camera.pos.z - g_Camera.at.z;
+	//g_Camera.len = sqrtf(vx * vx + vz * vz);
+	g_Camera.len = 500.0f;
 
 	// 線形補間で動かしてみる
 	g_Camera.time = 0.0f;		// 線形補間用のタイマーをクリア
@@ -165,6 +175,19 @@ void UpdateCamera(void)
 		{
 			g_CamAT.time -= maxNo;				// ０番目にリセットしつつも小数部分を引き継いでいる
 		}
+		switch ((int)g_CamAT.time)
+		{
+		case 0:
+
+			g_CamAT.pos.x = -900.0f;
+			g_CamAT.pos.y = 300.0f;
+			g_CamAT.pos.z = 400.0f;
+			break;
+		default:
+			break;
+		}
+
+
 	}
 
 	{	// 線形補間の処理
@@ -206,18 +229,18 @@ void UpdateCamera(void)
 			g_Camera.time -= maxNo;				// ０番目にリセットしつつも小数部分を引き継いでいる
 		}
 
-		switch ((int)g_CamAT.time)
+		switch ((int)g_Camera.time)
 		{
-		case 3:
+		case 0:
 			g_MoveCnt++;
-		 
-		  g_Camera.pos.x = g_CamAT.pos.x + g_Camera.len * cos(g_MoveCnt * XM_PI / 180 / 4); // 一秒に15°回転する
-		  g_Camera.pos.z = g_CamAT.pos.z + g_Camera.len * sin(g_MoveCnt * XM_PI / 180 / 4);	// 一秒に15°回転する
-		 
-			
-		  
 
+			g_Camera.pos.x = g_CamAT.pos.x + g_Camera.len * cos(g_MoveCnt * XM_PI / 180 / 12 + XM_PI * 0.8);	// 一秒に5°回転する
+			g_Camera.pos.z = g_CamAT.pos.z - g_Camera.len * sin(g_MoveCnt * XM_PI / 180 / 12 + XM_PI * 0.8);	// 一秒に5°回転する
+			g_Camera.pos.y = 300.0f;
+
+			break;
 		}
+
 	}
 
 	if (GetKeyboardPress(DIK_Z))
@@ -549,5 +572,16 @@ void SetCameraAT(XMFLOAT3 pos)
 	// カメラの視点をカメラのY軸回転に対応させている
 	g_Camera.pos.x = g_Camera.at.x - sinf(g_Camera.rot.y) * g_Camera.len;
 	g_Camera.pos.z = g_Camera.at.z - cosf(g_Camera.rot.y) * g_Camera.len;
+
+}
+
+// 円上にカメラの座標を動かす
+void CameraRotation(XMFLOAT3 CamAT_pos, float len, float deg)
+{
+	g_MoveCnt++;
+
+	g_Camera.pos.x = g_CamAT.pos.x + g_Camera.len * cos(g_MoveCnt * XM_PI / 180 / 12 + XM_PI * 0.8);	// 一秒に5°回転する
+	g_Camera.pos.z = g_CamAT.pos.z - g_Camera.len * sin(g_MoveCnt * XM_PI / 180 / 12 + XM_PI * 0.8);	// 一秒に5°回転する
+	g_Camera.pos.y = 300.0f;
 
 }

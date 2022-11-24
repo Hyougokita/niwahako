@@ -371,7 +371,7 @@ void Draw(void)
 	{
 		SetViewPort(TYPE_FULL_SCREEN);
 		XMFLOAT3 pos = GetCamAT()->pos;
-		pos.y = 0.0f;			// カメラ酔いを防ぐためにクリアしている
+		//pos.y = 0.0f;			// カメラ酔いを防ぐためにクリアしている
 
 		// カメラ注視点の設定
 		if (GetCamAT()->use)
