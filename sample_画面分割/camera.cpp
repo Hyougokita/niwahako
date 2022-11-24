@@ -62,12 +62,13 @@ static INTERPOLATION_DATA g_MoveTbl0[] = {
 /*04*/	{ XMFLOAT3(-150.0f, 220.0f, -1200.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(0.0f, 0.0f, 1.0f),	359 },
 /*05*/	{ XMFLOAT3(-150.0f, 120.0f, 300.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	1 },
 
-/*06*/	{ XMFLOAT3(-150.0f, 120.0f, 300.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	59 },
-/*07*/	{ XMFLOAT3(-150.0f, 120.0f, 300.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	1 },
-
 		// 日の出タイムラプス
-/*06*/	{ XMFLOAT3(-200.0f, 500.0f, -800.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	899 },
-/*07*/	{ XMFLOAT3(-200.0f, 500.0f, -800.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	1 },
+/*06*/	{ XMFLOAT3(750.0f, 100.0f, -900.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	899 },
+/*07*/	{ XMFLOAT3(750.0f, 100.0f, -900.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	1 },
+
+		// 家に入る？
+/*08*/	{ XMFLOAT3(1000.0f, 200.0f, -200.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	359 },
+/*09*/	{ XMFLOAT3(1000.0f, 200.0f, 600.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	1 },
 
 };
 
@@ -83,17 +84,18 @@ static INTERPOLATION_DATA g_MoveTbl1[] = {
 	{ XMFLOAT3(0.0f, 30.0f, 0.0f),			XMFLOAT3(0.0f, 0.0f, 0.0f),		XMFLOAT3(2.0f, 2.0f, 1.0f),	359 },
 	{ XMFLOAT3(0.0f, 30.0f, 0.0f),			XMFLOAT3(0.0f, 0.0f, 0.0f),		XMFLOAT3(2.0f, 2.0f, 1.0f),	1 },
 
-	// 川俯瞰
+	// 川
 	{ XMFLOAT3(-150.0f, 50.0f, -500.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),		XMFLOAT3(0.0f, 0.0f, 1.0f),	359 },
 	{ XMFLOAT3(-150.0f, 50.0f, 600.0f),		XMFLOAT3(0.0f, 0.0f, 0.0f),		XMFLOAT3(2.0f, 2.0f, 1.0f),	1 },
 
-	{ XMFLOAT3(-150.0f, 50.0f, -500.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),		XMFLOAT3(0.0f, 0.0f, 1.0f),	59 },
-	{ XMFLOAT3(-150.0f, 50.0f, 600.0f),		XMFLOAT3(0.0f, 0.0f, 0.0f),		XMFLOAT3(2.0f, 2.0f, 1.0f),	1 },
-
 	// 日の出タイムラプス風
-	{ XMFLOAT3(-200.0f, 400.0f, 2000.0f),		XMFLOAT3(0.0f, 0.0f, 0.0f),		XMFLOAT3(0.0f, 0.0f, 1.0f),	899 },
-	{ XMFLOAT3(0.0f, 400.0f, 2000.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),		XMFLOAT3(2.0f, 2.0f, 1.0f),	1 },
+	{ XMFLOAT3(200.0f, 300.0f, 200.0f),		XMFLOAT3(0.0f, 0.0f, 0.0f),		XMFLOAT3(0.0f, 0.0f, 1.0f),	899 },
+	{ XMFLOAT3(700.0f, 300.0f, 200.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),		XMFLOAT3(2.0f, 2.0f, 1.0f),	1 },
 
+	// 家
+	{ XMFLOAT3(1000.0f, 200.0f, 200.0f),		XMFLOAT3(0.0f, 0.0f, 0.0f),		XMFLOAT3(0.0f, 0.0f, 1.0f),	359 },
+	{ XMFLOAT3(1000.0f, 200.0f, 1000.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),		XMFLOAT3(2.0f, 2.0f, 1.0f),	1 },
+								
 };
 
 static INTERPOLATION_DATA* g_MoveTblAdr[] =
@@ -241,22 +243,26 @@ void UpdateCamera(void)
 		case 2:
 			CameraRotation(XMFLOAT3{ 900.0f, 250.0f, 780.0f }, 400.0f, 1000.0f, 6.0f, 100.0f, 360);
 			break;
+		case 4:
+			g_Camera.up.x -= 0.001f;
 		case 0:
-		//case 4:
 			g_MoveCnt++;
 			if (g_MoveCnt + 50 == 360)
 				SetFade(FADE_OUT);
 			break;
 		case 6:
 			g_MoveCnt++;
-			if (g_MoveCnt <= 20)
-			{
-				g_Camera.up.x -= 0.01f;
-			}
+			if (g_MoveCnt + 50 == 899)
+				SetFade(FADE_OUT);
 			break;
 		case 3: 
-		case 5: 
+			g_Camera.up.x = 0.2f;
 			InitCamGrobal();
+			break;
+		case 5: 
+			g_Camera.up.x = 0.0f;
+			InitCamGrobal();
+
 			break;
 		default:
 			break;
