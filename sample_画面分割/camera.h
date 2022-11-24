@@ -32,6 +32,8 @@ struct CAMERA
 	int					tblNo;			// 行動データのテーブル番号
 	int					tblMax;			// そのテーブルのデータ数
 
+	bool				canMove;		// 動けるかのフラグ
+
 };
 
 struct CAM_AT

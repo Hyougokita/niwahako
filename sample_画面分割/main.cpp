@@ -368,67 +368,21 @@ void Draw(void)
 	// バックバッファクリア
 	Clear();
 
-	//{
-	//	SetViewPort(TYPE_FULL_SCREEN);
-	//	XMFLOAT3 pos = GetCamAT()->pos;
-	//	pos.y = 0.0f;			// カメラ酔いを防ぐためにクリアしている
-
-	//	// カメラ注視点の設定
-	//	if (GetCamAT()->use)
-	//		GetCamera()->at = pos;
-	//	else
-	//		SetCameraAT(pos);
-
-	//	SetCamera();
-
-	//	// 地面の描画処理
-	//	//DrawMeshField();
-
-	//	// 影の描画処理
-	//	DrawShadow();
-
-	//	// プレイヤーの描画処理
-	//	DrawPlayer();
-
-	//	// エネミーの描画処理
-	//	DrawEnemy();
-
-	//	// 壁の描画処理
-	//	//DrawMeshWall();
-
-	//	// 木の描画処理
-	//	DrawTree();
-
-	//	// バレットの描画処理
-	//	DrawBullet();
-
-	//	// 2D表示用
-	//	{
-	//		// ライト・Z比較無効
-	//		SetLightEnable(false);
-	//		SetDepthEnable(false);
-
-	//		// ↓優先度を自分で決めて枠とかの描画の順番を決める
-
-	//		// スコアの描画処理
-	//		DrawScore();
-
-	//		// ライト・Z比較有効
-	//		SetLightEnable(true);
-	//		SetDepthEnable(true);
-	//	}
-	//}
-
-	// プレイヤー視点
 	{
 		SetViewPort(TYPE_FULL_SCREEN);
-		//XMFLOAT3 pos = GetPlayer()->pos;
-		//pos.y = 0.0f;			// カメラ酔いを防ぐためにクリアしている
-		//SetCameraAT(pos);
+		XMFLOAT3 pos = GetCamAT()->pos;
+		pos.y = 0.0f;			// カメラ酔いを防ぐためにクリアしている
+
+		// カメラ注視点の設定
+		if (GetCamAT()->use)
+			GetCamera()->at = pos;
+		else
+			SetCameraAT(pos);
+
 		SetCamera();
 
 		// 地面の描画処理
-		DrawMeshField();
+		//DrawMeshField();
 
 		// 影の描画処理
 		DrawShadow();
@@ -440,7 +394,7 @@ void Draw(void)
 		DrawEnemy();
 
 		// 壁の描画処理
-		DrawMeshWall();
+		//DrawMeshWall();
 
 		// 木の描画処理
 		DrawTree();
@@ -464,6 +418,52 @@ void Draw(void)
 			SetDepthEnable(true);
 		}
 	}
+
+	//// デバッグ用視点
+	//{
+	//	SetViewPort(TYPE_FULL_SCREEN);
+	//	//XMFLOAT3 pos = GetPlayer()->pos;
+	//	//pos.y = 0.0f;			// カメラ酔いを防ぐためにクリアしている
+	//	//SetCameraAT(pos);
+	//	SetCamera();
+
+	//	// 地面の描画処理
+	//	DrawMeshField();
+
+	//	// 影の描画処理
+	//	DrawShadow();
+
+	//	// プレイヤーの描画処理
+	//	DrawPlayer();
+
+	//	// エネミーの描画処理
+	//	DrawEnemy();
+
+	//	// 壁の描画処理
+	//	DrawMeshWall();
+
+	//	// 木の描画処理
+	//	DrawTree();
+
+	//	// バレットの描画処理
+	//	DrawBullet();
+
+	//	// 2D表示用
+	//	{
+	//		// ライト・Z比較無効
+	//		SetLightEnable(false);
+	//		SetDepthEnable(false);
+
+	//		// ↓優先度を自分で決めて枠とかの描画の順番を決める
+
+	//		// スコアの描画処理
+	//		DrawScore();
+
+	//		// ライト・Z比較有効
+	//		SetLightEnable(true);
+	//		SetDepthEnable(true);
+	//	}
+	//}
 
 	//// バレット視点
 	//{

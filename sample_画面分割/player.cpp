@@ -48,7 +48,7 @@ HRESULT InitPlayer(void)
 
 	g_Player.pos = { 0.0f, 0.0f, -100.0f };
 	g_Player.rot = { 0.0f, 0.0f, 0.0f };
-	g_Player.scl = { 1.0f, 1.0f, 1.0f };
+	g_Player.scl = { 10.0f, 10.0f, 10.0f };
 
 	g_Player.spd = 0.0f;			// 移動スピードクリア
 	g_Player.size = PLAYER_SIZE;	// 当たり判定の大きさ
@@ -110,25 +110,25 @@ void UpdatePlayer(void)
 	//	g_Player.dir = 0.0f;
 	//}
 
-	if (GetKeyboardPress(DIK_LSHIFT))
-	{
-		if (GetKeyboardPress(DIK_SPACE))
-		{
-			XMFLOAT3 pos = g_Player.pos;
-			XMFLOAT3 rot = g_Player.rot;
+	//if (GetKeyboardPress(DIK_LSHIFT))
+	//{
+	//	if (GetKeyboardPress(DIK_SPACE))
+	//	{
+	//		XMFLOAT3 pos = g_Player.pos;
+	//		XMFLOAT3 rot = g_Player.rot;
 
-			SetBullet(pos, rot);
+	//		SetBullet(pos, rot);
 
-		}
-	}
-	else if (GetKeyboardTrigger(DIK_SPACE))
-	{
-		XMFLOAT3 pos = g_Player.pos;
-		XMFLOAT3 rot = g_Player.rot;
-		 
-		SetBullet(pos, rot);
-		PlaySound(SOUND_LABEL_SE_defend000);
-	}
+	//	}
+	//}
+	//else if (GetKeyboardTrigger(DIK_SPACE))
+	//{
+	//	XMFLOAT3 pos = g_Player.pos;
+	//	XMFLOAT3 rot = g_Player.rot;
+	//	 
+	//	SetBullet(pos, rot);
+	//	PlaySound(SOUND_LABEL_SE_defend000);
+	//}
 	
 
 #ifdef _DEBUG

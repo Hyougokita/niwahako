@@ -37,18 +37,19 @@ static CAM_AT			g_CamAT;		// カメラ注視点データ
 
 static int				g_ViewPortType = TYPE_FULL_SCREEN;
 
+static int				g_MoveCnt;		// カウンタ
+
 // カメラ用線形補間移動テーブル
 static INTERPOLATION_DATA g_MoveTbl0[] = {
 	//座標									回転率							拡大率							時間
 
-	// 90°俯瞰　線形補間じゃなくあとのスイッチ文で動かす
-	{ XMFLOAT3(-50.0f, 30.0f, -50.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	360 },
-	{ XMFLOAT3(-200.0f, 30.0f, -200.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	200 },
-	{ XMFLOAT3(300.0f, 80.0f, 300.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	300 },
-	
-	// 川俯瞰
-	{ XMFLOAT3(-150.0f, 50.0f, -250.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(0.0f, 0.0f, 1.0f),	360 },
-	{ XMFLOAT3(100.0f, 10.0f, 0.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	200 },
+/*00*/	{ XMFLOAT3(-50.0f, 30.0f, -50.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	360 },
+/*01*/	{ XMFLOAT3(-200.0f, 30.0f, -200.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	200 },
+/*02*/	{ XMFLOAT3(300.0f, 80.0f, 300.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	300 },
+/*03*/	
+/*04*/	// 川俯瞰
+/*05*/	{ XMFLOAT3(-150.0f, 50.0f, -250.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(0.0f, 0.0f, 1.0f),	360 },
+/*06*/	{ XMFLOAT3(100.0f, 10.0f, 0.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	200 },
 
 };
 
@@ -84,6 +85,7 @@ void InitCamera(void)
 	g_Camera.at  = { 0.0f, 0.0f, 0.0f };
 	g_Camera.up  = { 0.0f, 1.0f, 0.0f };
 	g_Camera.rot = { 0.0f, 0.0f, 0.0f };
+	g_Camera.canMove = true;
 	g_CamAT.use = true;
 
 	// 視点と注視点の距離を計算
@@ -100,6 +102,8 @@ void InitCamera(void)
 	g_CamAT.time = 0.0f;		// 線形補間用のタイマーをクリア
 	g_CamAT.tblNo = 1;		// 再生するアニメデータの先頭アドレスをセット
 	g_CamAT.tblMax = sizeof(g_MoveTbl1) / sizeof(INTERPOLATION_DATA);	// 再生するアニメデータのレコード数をセット
+
+	g_MoveCnt = 0;
 
 	// ビューポートタイプの初期化
 	g_ViewPortType = TYPE_FULL_SCREEN;
@@ -123,93 +127,98 @@ void UpdateCamera(void)
 
 #ifdef _DEBUG
 
-	//// 移動処理
-	//{	// 線形補間の処理
-	//	int nowNo = (int)g_CamAT.time;			// 整数分であるテーブル番号を取り出している
-	//	int maxNo = g_CamAT.tblMax;				// 登録テーブル数を数えている
-	//	int nextNo = (nowNo + 1) % maxNo;			// 移動先テーブルの番号を求めている
-	//	INTERPOLATION_DATA* tbl = g_MoveTblAdr[g_CamAT.tblNo];	// 行動テーブルのアドレスを取得
+	// 移動処理
+	{	// 線形補間の処理
+		int nowNo = (int)g_CamAT.time;			// 整数分であるテーブル番号を取り出している
+		int maxNo = g_CamAT.tblMax;				// 登録テーブル数を数えている
+		int nextNo = (nowNo + 1) % maxNo;			// 移動先テーブルの番号を求めている
+		INTERPOLATION_DATA* tbl = g_MoveTblAdr[g_CamAT.tblNo];	// 行動テーブルのアドレスを取得
 
-	//	XMVECTOR nowPos = XMLoadFloat3(&tbl[nowNo].pos);	// XMVECTORへ変換
-	//	XMVECTOR nowRot = XMLoadFloat3(&tbl[nowNo].rot);	// XMVECTORへ変換
-	//	XMVECTOR nowScl = XMLoadFloat3(&tbl[nowNo].scl);	// XMVECTORへ変換
+		XMVECTOR nowPos = XMLoadFloat3(&tbl[nowNo].pos);	// XMVECTORへ変換
+		XMVECTOR nowRot = XMLoadFloat3(&tbl[nowNo].rot);	// XMVECTORへ変換
+		XMVECTOR nowScl = XMLoadFloat3(&tbl[nowNo].scl);	// XMVECTORへ変換
 
-	//	XMVECTOR Pos = XMLoadFloat3(&tbl[nextNo].pos) - nowPos;	// XYZ移動量を計算している
-	//	XMVECTOR Rot = XMLoadFloat3(&tbl[nextNo].rot) - nowRot;	// XYZ回転量を計算している
-	//	XMVECTOR Scl = XMLoadFloat3(&tbl[nextNo].scl) - nowScl;	// XYZ拡大率を計算している
+		XMVECTOR Pos = XMLoadFloat3(&tbl[nextNo].pos) - nowPos;	// XYZ移動量を計算している
+		XMVECTOR Rot = XMLoadFloat3(&tbl[nextNo].rot) - nowRot;	// XYZ回転量を計算している
+		XMVECTOR Scl = XMLoadFloat3(&tbl[nextNo].scl) - nowScl;	// XYZ拡大率を計算している
 
-	//	float nowTime = g_CamAT.time - nowNo;	// 時間部分である少数を取り出している
+		float nowTime = g_CamAT.time - nowNo;	// 時間部分である少数を取り出している
 
-	//	Pos *= nowTime;								// 現在の移動量を計算している
-	//	Rot *= nowTime;								// 現在の回転量を計算している
-	//	Scl *= nowTime;								// 現在の拡大率を計算している
+		Pos *= nowTime;								// 現在の移動量を計算している
+		Rot *= nowTime;								// 現在の回転量を計算している
+		Scl *= nowTime;								// 現在の拡大率を計算している
 
-	//	// 計算して求めた移動量を現在の移動テーブルXYZに足している＝表示座標を求めている
-	//	XMStoreFloat3(&g_CamAT.pos, nowPos + Pos);
+		// 計算して求めた移動量を現在の移動テーブルXYZに足している＝表示座標を求めている
+		XMStoreFloat3(&g_CamAT.pos, nowPos + Pos);
 
-	//	//// 計算して求めた回転量を現在の移動テーブルに足している
-	//	//XMStoreFloat3(&g_CamAT.rot, nowRot + Rot);
+		//// 計算して求めた回転量を現在の移動テーブルに足している
+		//XMStoreFloat3(&g_CamAT.rot, nowRot + Rot);
 
-	//	//// 計算して求めた拡大率を現在の移動テーブルに足している
-	//	//XMStoreFloat3(&g_CamAT.scl, nowScl + Scl);
-	//	//g_CamAT.w = TEXTURE_WIDTH * g_CamAT.scl.x;
-	//	//g_CamAT.h = TEXTURE_HEIGHT * g_CamAT.scl.y;
+		//// 計算して求めた拡大率を現在の移動テーブルに足している
+		//XMStoreFloat3(&g_CamAT.scl, nowScl + Scl);
+		//g_CamAT.w = TEXTURE_WIDTH * g_CamAT.scl.x;
+		//g_CamAT.h = TEXTURE_HEIGHT * g_CamAT.scl.y;
 
-	//	// frameを使て時間経過処理をする
-	//	g_CamAT.time += 1.0f / tbl[nowNo].frame;	// 時間を進めている
-	//	if ((int)g_CamAT.time >= maxNo)			// 登録テーブル最後まで移動したか？
-	//	{
-	//		g_CamAT.time -= maxNo;				// ０番目にリセットしつつも小数部分を引き継いでいる
-	//	}
-	//}
+		// frameを使て時間経過処理をする
+		g_CamAT.time += 1.0f / tbl[nowNo].frame;	// 時間を進めている
+		if ((int)g_CamAT.time >= maxNo)			// 登録テーブル最後まで移動したか？
+		{
+			g_CamAT.time -= maxNo;				// ０番目にリセットしつつも小数部分を引き継いでいる
+		}
+	}
 
-	//{	// 線形補間の処理
-	//	int nowNo = (int)g_Camera.time;			// 整数分であるテーブル番号を取り出している
-	//	int maxNo = g_Camera.tblMax;				// 登録テーブル数を数えている
-	//	int nextNo = (nowNo + 1) % maxNo;			// 移動先テーブルの番号を求めている
-	//	INTERPOLATION_DATA* tbl = g_MoveTblAdr[g_Camera.tblNo];	// 行動テーブルのアドレスを取得
+	{	// 線形補間の処理
+		int nowNo = (int)g_Camera.time;			// 整数分であるテーブル番号を取り出している
+		int maxNo = g_Camera.tblMax;				// 登録テーブル数を数えている
+		int nextNo = (nowNo + 1) % maxNo;			// 移動先テーブルの番号を求めている
+		INTERPOLATION_DATA* tbl = g_MoveTblAdr[g_Camera.tblNo];	// 行動テーブルのアドレスを取得
 
-	//	XMVECTOR nowPos = XMLoadFloat3(&tbl[nowNo].pos);	// XMVECTORへ変換
-	//	XMVECTOR nowRot = XMLoadFloat3(&tbl[nowNo].rot);	// XMVECTORへ変換
-	//	XMVECTOR nowScl = XMLoadFloat3(&tbl[nowNo].scl);	// XMVECTORへ変換
+		XMVECTOR nowPos = XMLoadFloat3(&tbl[nowNo].pos);	// XMVECTORへ変換
+		XMVECTOR nowRot = XMLoadFloat3(&tbl[nowNo].rot);	// XMVECTORへ変換
+		XMVECTOR nowScl = XMLoadFloat3(&tbl[nowNo].scl);	// XMVECTORへ変換
 
-	//	XMVECTOR Pos = XMLoadFloat3(&tbl[nextNo].pos) - nowPos;	// XYZ移動量を計算している
-	//	XMVECTOR Rot = XMLoadFloat3(&tbl[nextNo].rot) - nowRot;	// XYZ回転量を計算している
-	//	XMVECTOR Scl = XMLoadFloat3(&tbl[nextNo].scl) - nowScl;	// XYZ拡大率を計算している
+		XMVECTOR Pos = XMLoadFloat3(&tbl[nextNo].pos) - nowPos;	// XYZ移動量を計算している
+		XMVECTOR Rot = XMLoadFloat3(&tbl[nextNo].rot) - nowRot;	// XYZ回転量を計算している
+		XMVECTOR Scl = XMLoadFloat3(&tbl[nextNo].scl) - nowScl;	// XYZ拡大率を計算している
 
-	//	float nowTime = g_Camera.time - nowNo;	// 時間部分である少数を取り出している
+		float nowTime = g_Camera.time - nowNo;	// 時間部分である少数を取り出している
 
-	//	Pos *= nowTime;								// 現在の移動量を計算している
-	//	Rot *= nowTime;								// 現在の回転量を計算している
-	//	Scl *= nowTime;								// 現在の拡大率を計算している
+		Pos *= nowTime;								// 現在の移動量を計算している
+		Rot *= nowTime;								// 現在の回転量を計算している
+		Scl *= nowTime;								// 現在の拡大率を計算している
 
-	//	// 計算して求めた移動量を現在の移動テーブルXYZに足している＝表示座標を求めている
-	//	XMStoreFloat3(&g_Camera.pos, nowPos + Pos);
+		// 計算して求めた移動量を現在の移動テーブルXYZに足している＝表示座標を求めている
+		XMStoreFloat3(&g_Camera.pos, nowPos + Pos);
 
-	//	// 計算して求めた回転量を現在の移動テーブルに足している
-	//	XMStoreFloat3(&g_Camera.rot, nowRot + Rot);
+		// 計算して求めた回転量を現在の移動テーブルに足している
+		XMStoreFloat3(&g_Camera.rot, nowRot + Rot);
 
-	//	//// 計算して求めた拡大率を現在の移動テーブルに足している
-	//	//XMStoreFloat3(&g_Camera.scl, nowScl + Scl);
-	//	//g_Camera.w = TEXTURE_WIDTH * g_Camera.scl.x;
-	//	//g_Camera.h = TEXTURE_HEIGHT * g_Camera.scl.y;
-
-
-	//	// frameを使て時間経過処理をする
-	//	g_Camera.time += 1.0f / tbl[nowNo].frame;	// 時間を進めている
-	//	if ((int)g_Camera.time >= maxNo)			// 登録テーブル最後まで移動したか？
-	//	{
-	//		g_Camera.time -= maxNo;				// ０番目にリセットしつつも小数部分を引き継いでいる
-	//	}
-
-	//	// 俯瞰回転とか　線形以外用スイッチ文
-	//	switch ((int)g_CamAT.time)
-	//	{
+		//// 計算して求めた拡大率を現在の移動テーブルに足している
+		//XMStoreFloat3(&g_Camera.scl, nowScl + Scl);
+		//g_Camera.w = TEXTURE_WIDTH * g_Camera.scl.x;
+		//g_Camera.h = TEXTURE_HEIGHT * g_Camera.scl.y;
 
 
+		// frameを使て時間経過処理をする
+		g_Camera.time += 1.0f / tbl[nowNo].frame;	// 時間を進めている
+		if ((int)g_Camera.time >= maxNo)			// 登録テーブル最後まで移動したか？
+		{
+			g_Camera.time -= maxNo;				// ０番目にリセットしつつも小数部分を引き継いでいる
+		}
 
-	//	}
-	//}
+		switch ((int)g_CamAT.time)
+		{
+		case 3:
+			g_MoveCnt++;
+		 
+		  g_Camera.pos.x = g_CamAT.pos.x + g_Camera.len * cos(g_MoveCnt * XM_PI / 180 / 4); // 一秒に15°回転する
+		  g_Camera.pos.z = g_CamAT.pos.z + g_Camera.len * sin(g_MoveCnt * XM_PI / 180 / 4);	// 一秒に15°回転する
+		 
+			
+		  
+
+		}
+	}
 
 	if (GetKeyboardPress(DIK_Z))
 	{// 視点旋回「左」
@@ -305,7 +314,8 @@ void UpdateCamera(void)
 
 
 #ifdef _DEBUG	// デバッグ情報を表示する
-	PrintDebugProc("Camera:ZC QE TB YN UM R\n");
+	PrintDebugProc("Camera Pos X:%f,Y:%d,Z:%f UP x:%f y:%f z:%f", g_Camera.pos.x, g_Camera.pos.y, g_Camera.pos.z,
+																g_Camera.up.x, g_Camera.up.y, g_Camera.up.z);
 
 	if (GetKeyboardPress(DIK_LEFT))
 	{	// 左へ移動
@@ -322,6 +332,41 @@ void UpdateCamera(void)
 	if (GetKeyboardPress(DIK_DOWN))
 	{	// 左へ移動
 		g_Camera.pos.z -= 2.0f;
+	}
+	if (GetKeyboardPress(DIK_LSHIFT))
+	{
+		if (GetKeyboardPress(DIK_LEFT))
+		{	// 左へ移動
+			g_Camera.pos.x -= 10.0f;
+		}
+		if (GetKeyboardPress(DIK_RIGHT))
+		{	// 左へ移動
+			g_Camera.pos.x += 10.0f;
+		}
+		if (GetKeyboardPress(DIK_UP))
+		{	// 左へ移動
+			g_Camera.pos.z += 10.0f;
+		}
+		if (GetKeyboardPress(DIK_DOWN))
+		{	// 左へ移動
+			g_Camera.pos.z -= 10.0f;
+		}
+	}
+	if (GetKeyboardPress(DIK_SPACE))
+	{	// 左へ移動
+		g_Camera.pos.y += 2.0f;
+	}
+	if (GetKeyboardPress(DIK_N))
+	{	// 左へ移動
+		g_Camera.pos.y -= 2.0f;
+	}
+	if (GetKeyboardPress(DIK_1))
+	{	// 左へ移動
+		g_Camera.up.x += 0.005f;
+	}
+	if (GetKeyboardPress(DIK_2))
+	{	// 左へ移動
+		g_Camera.up.x -= 0.005f;
 	}
 
 	if (GetKeyboardPress(DIK_A))
