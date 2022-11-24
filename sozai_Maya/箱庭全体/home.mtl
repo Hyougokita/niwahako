@@ -1,33 +1,11 @@
-newmtl initialShadingGroup
+newmtl newhome:Candlelight
 illum 4
-Kd 0.50 0.50 0.50
+Kd 1.00 0.88 0.53
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
 Ni 1.00
-newmtl lambert4SG
-illum 4
-Kd 0.10 0.06 0.04
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-Ni 1.00
-newmtl lambert8SG
-illum 4
-Kd 0.12 0.12 0.12
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-Ni 1.00
-newmtl lambert9SG
-illum 4
-Kd 0.11 0.11 0.11
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-Ni 1.00
-newmtl lambert11SG
-illum 4
-Kd 0.45 0.17 0.13
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
 newmtl newhome:Dark_Red_Roof
 illum 4
 Kd 0.42 0.18 0.12
@@ -55,6 +33,46 @@ Ns 0.00
 newmtl newhome:Dark_Red_Roof6
 illum 4
 Kd 0.42 0.18 0.12
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl newhome:Iron_Grey
+illum 4
+Kd 0.43 0.42 0.39
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl newhome:Iron_Grey2
+illum 4
+Kd 0.43 0.42 0.39
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl newhome:Iron_Grey4
+illum 4
+Kd 0.43 0.42 0.39
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl newhome:Iron_Grey6
+illum 4
+Kd 0.43 0.42 0.39
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl newhome:Iron_Grey___Dark
+illum 4
+Kd 0.30 0.29 0.27
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
 Ni 1.00
@@ -188,6 +206,38 @@ Tf 1.00 1.00 1.00
 Ni 1.00
 Ks 1.00 1.00 1.00
 Ns 0.00
+newmtl newhome:Wood_Dark
+illum 4
+Kd 0.52 0.42 0.33
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl newhome:Wood_Dark2
+illum 4
+Kd 0.52 0.42 0.33
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl newhome:Wood_Dark4
+illum 4
+Kd 0.52 0.42 0.33
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl newhome:Wood_Dark6
+illum 4
+Kd 0.52 0.42 0.33
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
 newmtl newhome:Wood_Darker
 illum 4
 Kd 0.38 0.31 0.25
@@ -212,7 +262,23 @@ Tf 1.00 1.00 1.00
 Ni 1.00
 Ks 1.00 1.00 1.00
 Ns 0.00
+newmtl newhome:Wood_Darker6
+illum 4
+Kd 0.38 0.31 0.25
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
 newmtl newhome:Wood_Darker8
+illum 4
+Kd 0.38 0.31 0.25
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl newhome:Wood_Darker10
 illum 4
 Kd 0.38 0.31 0.25
 Ka 0.00 0.00 0.00
@@ -236,59 +302,43 @@ Tf 1.00 1.00 1.00
 Ni 1.00
 Ks 1.00 1.00 1.00
 Ns 0.00
-newmtl phong3SG
+newmtl newhome:Wood_Darker16
 illum 4
-Kd 0.34 0.34 0.34
+Kd 0.38 0.31 0.25
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
 Ni 1.00
-Ks 0.50 0.50 0.50
-Ns 18.00
-newmtl phong4SG
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl newhome:Wood_Light
 illum 4
-Kd 0.89 0.89 0.89
+Kd 0.74 0.63 0.46
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
 Ni 1.00
-Ks 0.50 0.50 0.50
-Ns 18.00
-newmtl phong5SG
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl newhome:Wood_Medium
 illum 4
-Kd 0.16 0.12 0.06
+Kd 0.63 0.53 0.40
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
 Ni 1.00
-Ks 0.50 0.50 0.50
-Ns 18.00
-newmtl phong6SG
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl newhome:Wood_Medium2
 illum 4
-Kd 0.70 0.80 0.80
+Kd 0.63 0.53 0.40
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
 Ni 1.00
-Ks 0.50 0.50 0.50
-Ns 18.00
-newmtl phong7SG
+Ks 1.00 1.00 1.00
+Ns 0.00
+newmtl newhome:Wood_Medium4
 illum 4
-Kd 0.42 0.61 0.60
+Kd 0.63 0.53 0.40
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
 Ni 1.00
-Ks 0.50 0.50 0.50
-Ns 18.00
-newmtl phong8SG
-illum 4
-Kd 0.22 0.21 0.20
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-Ni 1.00
-Ks 0.50 0.50 0.50
-Ns 18.00
-newmtl phong9SG
-illum 4
-Kd 1.00 1.00 1.00
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-Ni 1.00
-Ks 0.50 0.50 0.50
-Ns 18.00
+Ks 1.00 1.00 1.00
+Ns 0.00
