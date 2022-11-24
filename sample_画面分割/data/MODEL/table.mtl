@@ -1,0 +1,32 @@
+newmtl Full_Size_Bed_with_White_Sheets_Black_V1:Ebony_mat
+illum 4
+Kd 0.12 0.12 0.12
+Ka 0.12 0.12 0.12
+Tf 1.00 1.00 1.00
+Ni 1.50
+Ks 0.22 0.22 0.22
+Ns 26.00
+newmtl Full_Size_Bed_with_White_Sheets_Black_V1:White_Mat__cloth_
+illum 4
+Kd 0.97 0.97 0.97
+Ka 0.97 0.97 0.97
+Tf 1.00 1.00 1.00
+Ni 1.50
+Ks 0.00 0.00 0.00
+Ns 10.00
+newmtl diining_furnitures_29__vray2:wire_184228153
+illum 4
+Kd 0.72 0.89 0.60
+Ka 0.72 0.89 0.60
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.35 0.35 0.35
+Ns 32.00
+newmtl diining_furnitures_29__vray2:wire_228214153
+illum 4
+Kd 0.89 0.84 0.60
+Ka 0.89 0.84 0.60
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.35 0.35 0.35
+Ns 32.00

@@ -16,6 +16,8 @@ enum
 	SOUND_LABEL_BGM_sample000,	// BGM0
 	SOUND_LABEL_BGM_sample001,	// BGM1
 	SOUND_LABEL_BGM_sample002,	// BGM2
+	SOUND_LABEL_BGM_Pride,		// BGM3
+	SOUND_LABEL_BGM_brook,		// BGM4
 	SOUND_LABEL_SE_bomb000,		// ”š”­‰¹
 	SOUND_LABEL_SE_defend000,	// 
 	SOUND_LABEL_SE_defend001,	// 

@@ -62,9 +62,9 @@ HRESULT InitEnemy(void)
 
 		XMFLOAT3 pos = g_Enemy[i].pos;
 		pos.y -= (ENEMY_OFFSET_Y - 0.1f);
-		g_Enemy[i].shadowIdx = CreateShadow(pos, ENEMY_SHADOW_SIZE, ENEMY_SHADOW_SIZE);
+		//g_Enemy[i].shadowIdx = CreateShadow(pos, ENEMY_SHADOW_SIZE, ENEMY_SHADOW_SIZE);
 		
-		g_Enemy[i].use = true;		// true:ê∂Ç´ÇƒÇÈ
+		g_Enemy[i].use = false;		// true:ê∂Ç´ÇƒÇÈ
 
 	}
 
