@@ -32,7 +32,9 @@ static int		colChangeCnt;
 static int		sunMoveCnt;
 
 int lightCount = 0;
-#define LIGHT_PADDING	(30)
+int canUpdateCount = 0;
+bool canUpdate = false;
+#define LIGHT_PADDING	(10)
 
 //=============================================================================
 // ‰Šú‰»ˆ—
@@ -88,13 +90,19 @@ void InitLight(void)
 //=============================================================================
 void UpdateLight(void)
 {
-	lightCount++;
-	if (lightCount >= LIGHT_PADDING) {
-		lightCount = 0;
-		g_Light[0].degree += 0.1f;
-		g_Light[0].Position = RotZ(&g_Light[0]);
-		g_Light[0].Direction = NorLightDir(&g_Light[0]);
-		SetLight(0, &g_Light[0]);
+	canUpdateCount++;
+	if (canUpdateCount >= 1080) {
+		canUpdate = true;
+	}
+	if (canUpdate) {
+		lightCount++;
+		if (lightCount >= LIGHT_PADDING) {
+			lightCount = 0;
+			g_Light[0].degree += 0.005f;
+			g_Light[0].Position = RotZ(&g_Light[0]);
+			g_Light[0].Direction = NorLightDir(&g_Light[0]);
+			SetLight(0, &g_Light[0]);
+		}
 	}
 	//colChangeCnt++;
 
