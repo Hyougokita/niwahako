@@ -176,6 +176,10 @@ void DrawFade(void)
 	UINT offset = 0;
 	GetDeviceContext()->IASetVertexBuffers(0, 1, &g_VertexBuffer, &stride, &offset);
 
+	// マトリクス設定
+	SetWorldViewProjection2D();
+
+
 	// プリミティブトポロジ設定
 	GetDeviceContext()->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
 

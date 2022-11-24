@@ -16,7 +16,7 @@
 //*****************************************************************************
 // マクロ定義
 //*****************************************************************************
-#define	MODEL_ENEMY			"data/MODEL/others.obj"		// 読み込むモデル名
+#define	MODEL_ENEMY			"data/MODEL/hakoniwa.obj"		// 読み込むモデル名
 
 #define	VALUE_MOVE			(5.0f)						// 移動量
 #define	VALUE_ROTATE		(XM_PI * 0.02f)				// 回転量
@@ -48,7 +48,7 @@ HRESULT InitEnemy(void)
 		LoadModel(MODEL_ENEMY, &g_Enemy[i].model);
 		g_Enemy[i].load = true;
 
-		g_Enemy[i].pos = XMFLOAT3(-50.0f + i * 30.0f, 7.0f, 20.0f);
+		g_Enemy[i].pos = XMFLOAT3(0.0f, 0.0f, 0.0f);
 		g_Enemy[i].rot = XMFLOAT3(0.0f, 0.0f, 0.0f);
 		g_Enemy[i].scl = XMFLOAT3(1.0f, 1.0f, 1.0f);
 
@@ -70,6 +70,16 @@ HRESULT InitEnemy(void)
 
 	g_Enemy[0].scl = XMFLOAT3(10.0f, 10.0f, 10.0f);
 	g_Enemy[0].use = true;		// true:生きてる
+
+	LoadModel("data/MODEL/kagu_kitchen.obj", &g_Enemy[1].model);
+	g_Enemy[1].scl = XMFLOAT3(10.0f, 10.0f, 10.0f);
+	g_Enemy[1].use = true;		// true:生きてる
+
+	LoadModel("data/MODEL/kagu_other.obj", &g_Enemy[2].model);
+	g_Enemy[2].scl = XMFLOAT3(10.0f, 10.0f, 10.0f);
+	g_Enemy[2].use = true;		// true:生きてる
+
+
 
 
 	return S_OK;

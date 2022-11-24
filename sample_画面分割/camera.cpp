@@ -50,25 +50,30 @@ static int				g_MoveCnt;		// カウンタ
 static INTERPOLATION_DATA g_MoveTbl0[] = {
 	//座標									回転率							拡大率							時間
 	// 
-		// カメラ座標固定＋注視点回転
+		// カメラ座標固定＋注視点回転 6
 /*00*/	{ XMFLOAT3(-900.0f, 500.0f, -800.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	359 },
 /*01*/	{ XMFLOAT3(-900.0f, 500.0f, -800.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	1 },
 
-		// 注視点固定＋カメラ座標回転
+		// 注視点固定＋カメラ座標回転 6 12
 /*02*/	{ XMFLOAT3(900.0f, 30.0f, -200.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	359 },
 /*03*/	{ XMFLOAT3(780.0f, 30.0f, -200.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	1 },
 
-		// 川・橋下直進
-/*04*/	{ XMFLOAT3(-150.0f, 220.0f, -1200.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(0.0f, 0.0f, 1.0f),	359 },
-/*05*/	{ XMFLOAT3(-150.0f, 120.0f, 300.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	1 },
+		// 川・橋下直進 6 18
+/*04*/	{ XMFLOAT3(-90.0f, 220.0f, -1200.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(0.0f, 0.0f, 1.0f),	359 },
+/*05*/	{ XMFLOAT3(-90.0f, 120.0f, 300.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	1 },
 
-		// 日の出タイムラプス
-/*06*/	{ XMFLOAT3(750.0f, 100.0f, -900.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	899 },
-/*07*/	{ XMFLOAT3(750.0f, 100.0f, -900.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	1 },
+		// 日の出タイムラプス 15 33
+/*06*/	{ XMFLOAT3(750.0f, 200.0f, -900.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	899 },
+/*07*/	{ XMFLOAT3(750.0f, 200.0f, -900.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	1 },
 
-		// 家に入る？
-/*08*/	{ XMFLOAT3(1000.0f, 200.0f, -200.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	359 },
-/*09*/	{ XMFLOAT3(1000.0f, 200.0f, 600.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	1 },
+		// 家に入る？ 6 39/ 6 45
+/*08*/	{ XMFLOAT3(1000.0f, 200.0f, -200.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	360 },
+/*09*/	{ XMFLOAT3(1000.0f, 200.0f, 880.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	359 },
+/*10*/	{ XMFLOAT3(1000.0f, 200.0f, 880.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	1 },
+
+		// ボート
+/*11*/	{ XMFLOAT3(750.0f, 200.0f, -1200.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	359 },
+/*12*/	{ XMFLOAT3(750.0f, 200.0f, -1200.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),	XMFLOAT3(2.0f, 2.0f, 1.0f),	1 },
 
 };
 
@@ -85,17 +90,23 @@ static INTERPOLATION_DATA g_MoveTbl1[] = {
 	{ XMFLOAT3(0.0f, 30.0f, 0.0f),			XMFLOAT3(0.0f, 0.0f, 0.0f),		XMFLOAT3(2.0f, 2.0f, 1.0f),	1 },
 
 	// 川
-	{ XMFLOAT3(-150.0f, 50.0f, -500.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),		XMFLOAT3(0.0f, 0.0f, 1.0f),	359 },
-	{ XMFLOAT3(-150.0f, 50.0f, 600.0f),		XMFLOAT3(0.0f, 0.0f, 0.0f),		XMFLOAT3(2.0f, 2.0f, 1.0f),	1 },
+	{ XMFLOAT3(-90.0f, 50.0f, -500.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),		XMFLOAT3(0.0f, 0.0f, 1.0f),	359 },
+	{ XMFLOAT3(-90.0f, 50.0f, 600.0f),		XMFLOAT3(0.0f, 0.0f, 0.0f),		XMFLOAT3(2.0f, 2.0f, 1.0f),	1 },
 
 	// 日の出タイムラプス風
 	{ XMFLOAT3(200.0f, 300.0f, 200.0f),		XMFLOAT3(0.0f, 0.0f, 0.0f),		XMFLOAT3(0.0f, 0.0f, 1.0f),	899 },
 	{ XMFLOAT3(700.0f, 300.0f, 200.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),		XMFLOAT3(2.0f, 2.0f, 1.0f),	1 },
 
 	// 家
-	{ XMFLOAT3(1000.0f, 200.0f, 200.0f),		XMFLOAT3(0.0f, 0.0f, 0.0f),		XMFLOAT3(0.0f, 0.0f, 1.0f),	359 },
-	{ XMFLOAT3(1000.0f, 200.0f, 1000.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),		XMFLOAT3(2.0f, 2.0f, 1.0f),	1 },
-								
+	{ XMFLOAT3(1000.0f, 200.0f, 200.0f),		XMFLOAT3(0.0f, 0.0f, 0.0f),		XMFLOAT3(0.0f, 0.0f, 1.0f),	360 },
+	{ XMFLOAT3(1000.0f, 250.0f, 1200.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),		XMFLOAT3(2.0f, 2.0f, 1.0f),	30 },
+	{ XMFLOAT3(1000.0f, 250.0f, 1200.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),		XMFLOAT3(2.0f, 2.0f, 1.0f),	329 },
+	{ XMFLOAT3(1000.0f, 150.0f, 1200.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),		XMFLOAT3(2.0f, 2.0f, 1.0f),	1 },
+			
+	// ボート
+	{ XMFLOAT3(750.0f, 150.0f, -900.0f),		XMFLOAT3(0.0f, 0.0f, 0.0f),		XMFLOAT3(0.0f, 0.0f, 1.0f),	359 },
+	{ XMFLOAT3(850.0f, 150.0f, -900.0f),	XMFLOAT3(0.0f, 0.0f, 0.0f),		XMFLOAT3(2.0f, 2.0f, 1.0f),	1 },
+
 };
 
 static INTERPOLATION_DATA* g_MoveTblAdr[] =
@@ -111,7 +122,7 @@ static INTERPOLATION_DATA* g_MoveTblAdr[] =
 //=============================================================================
 void InitCamera(void)
 {
-	g_Camera.pos = { POS_X_CAM, POS_Y_CAM, POS_Z_CAM };
+	g_Camera.pos = { -900.0f, 500.0f, -800.0f };
 	g_CamAT.pos = { 0.0f, 50.0f, 0.0f };
 	g_Camera.at  = { 0.0f, 0.0f, 0.0f };
 	g_Camera.up  = { 0.0f, 1.0f, 0.0f };
@@ -246,7 +257,26 @@ void UpdateCamera(void)
 		case 4:
 			g_Camera.up.x -= 0.001f;
 		case 0:
+		case 11:
 			g_MoveCnt++;
+			if (g_MoveCnt + 50 == 360)
+				SetFade(FADE_OUT);
+			break;
+		case 9:
+			g_MoveCnt++;
+			if (g_MoveCnt <= 30)
+			{
+				g_CamAT.pos.x += sin(g_MoveCnt * XM_2PI / 360) * 250;
+				//g_CamAT.pos.y += 5.0f;
+				//g_CamAT.pos.z += cos(g_MoveCnt * XM_2PI / 360) * 150;
+			}
+			else if (g_MoveCnt > 30)
+			{
+				g_CamAT.pos.x += sin(g_MoveCnt * XM_2PI / 360) * 280;
+				//g_CamAT.pos.y -= 5.0f;
+				//g_CamAT.pos.z += cos(g_MoveCnt * XM_2PI / 360) * 150;
+			}
+
 			if (g_MoveCnt + 50 == 360)
 				SetFade(FADE_OUT);
 			break;
@@ -261,9 +291,12 @@ void UpdateCamera(void)
 			break;
 		case 5: 
 			g_Camera.up.x = 0.0f;
+		case 7:
+		case 10:
+		case 12:
 			InitCamGrobal();
-
 			break;
+
 		default:
 			break;
 		}
@@ -364,8 +397,8 @@ void UpdateCamera(void)
 
 
 #ifdef _DEBUG	// デバッグ情報を表示する
-	PrintDebugProc("Camera Pos X:%f,Y:%d,Z:%f UP x:%f y:%f z:%f", g_Camera.pos.x, g_Camera.pos.y, g_Camera.pos.z,
-																g_Camera.up.x, g_Camera.up.y, g_Camera.up.z);
+	//PrintDebugProc("Camera Pos X:%f,Y:%d,Z:%f UP x:%f y:%f z:%f", g_Camera.pos.x, g_Camera.pos.y, g_Camera.pos.z,
+	//															g_Camera.up.x, g_Camera.up.y, g_Camera.up.z);
 
 	if (GetKeyboardPress(DIK_LEFT))
 	{	// 左へ移動
