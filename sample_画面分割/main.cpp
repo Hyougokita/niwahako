@@ -22,7 +22,7 @@
 #include "score.h"
 #include "sound.h"
 #include "fade.h"
-
+#include "cloud.h"
 //*****************************************************************************
 // マクロ定義
 //*****************************************************************************
@@ -268,6 +268,9 @@ HRESULT Init(HINSTANCE hInstance, HWND hWnd, BOOL bWindow)
 	// スコアの初期化処理
 	InitScore();
 
+	// 雲とドアの初期化処理
+	InitCloud();
+
 	// サウンドの初期化処理
 	InitSound(hWnd);
 
@@ -325,6 +328,9 @@ void Uninit(void)
 
 	// レンダラーの終了処理
 	UninitRenderer();
+
+	// 雲とドアの終了処理
+	UninitCloud();
 }
 
 //=============================================================================
@@ -370,6 +376,9 @@ void Update(void)
 
 	// スコアの更新処理
 	UpdateScore();
+
+	//　雲とドアの更新処理
+	UpdateCloud();
 }
 
 //=============================================================================
@@ -386,7 +395,7 @@ void Draw(void)
 		//pos.y = 0.0f;			// カメラ酔いを防ぐためにクリアしている
 
 		// カメラ注視点の設定
-		GetCamera()->at = pos;
+		//GetCamera()->at = pos;
 
 		SetCamera();
 
@@ -410,6 +419,11 @@ void Draw(void)
 
 		// バレットの描画処理
 		DrawBullet();
+
+		// 雲とドアの描画処理
+		DrawCloud();
+
+		
 
 		// 2D表示用
 		{

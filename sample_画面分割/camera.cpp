@@ -210,98 +210,98 @@ void UpdateCamera(void)
 		}
 	}
 
-	{	// 線形補間の処理
-		int nowNo = (int)g_Camera.time;			// 整数分であるテーブル番号を取り出している
-		int maxNo = g_Camera.tblMax;				// 登録テーブル数を数えている
-		int nextNo = (nowNo + 1) % maxNo;			// 移動先テーブルの番号を求めている
-		INTERPOLATION_DATA* tbl = g_MoveTblAdr[g_Camera.tblNo];	// 行動テーブルのアドレスを取得
+	//{	// 線形補間の処理
+	//	int nowNo = (int)g_Camera.time;			// 整数分であるテーブル番号を取り出している
+	//	int maxNo = g_Camera.tblMax;				// 登録テーブル数を数えている
+	//	int nextNo = (nowNo + 1) % maxNo;			// 移動先テーブルの番号を求めている
+	//	INTERPOLATION_DATA* tbl = g_MoveTblAdr[g_Camera.tblNo];	// 行動テーブルのアドレスを取得
 
-		XMVECTOR nowPos = XMLoadFloat3(&tbl[nowNo].pos);	// XMVECTORへ変換
-		XMVECTOR nowRot = XMLoadFloat3(&tbl[nowNo].rot);	// XMVECTORへ変換
-		XMVECTOR nowScl = XMLoadFloat3(&tbl[nowNo].scl);	// XMVECTORへ変換
+	//	XMVECTOR nowPos = XMLoadFloat3(&tbl[nowNo].pos);	// XMVECTORへ変換
+	//	XMVECTOR nowRot = XMLoadFloat3(&tbl[nowNo].rot);	// XMVECTORへ変換
+	//	XMVECTOR nowScl = XMLoadFloat3(&tbl[nowNo].scl);	// XMVECTORへ変換
 
-		XMVECTOR Pos = XMLoadFloat3(&tbl[nextNo].pos) - nowPos;	// XYZ移動量を計算している
-		XMVECTOR Rot = XMLoadFloat3(&tbl[nextNo].rot) - nowRot;	// XYZ回転量を計算している
-		XMVECTOR Scl = XMLoadFloat3(&tbl[nextNo].scl) - nowScl;	// XYZ拡大率を計算している
+	//	XMVECTOR Pos = XMLoadFloat3(&tbl[nextNo].pos) - nowPos;	// XYZ移動量を計算している
+	//	XMVECTOR Rot = XMLoadFloat3(&tbl[nextNo].rot) - nowRot;	// XYZ回転量を計算している
+	//	XMVECTOR Scl = XMLoadFloat3(&tbl[nextNo].scl) - nowScl;	// XYZ拡大率を計算している
 
-		float nowTime = g_Camera.time - nowNo;	// 時間部分である少数を取り出している
+	//	float nowTime = g_Camera.time - nowNo;	// 時間部分である少数を取り出している
 
-		Pos *= nowTime;								// 現在の移動量を計算している
-		Rot *= nowTime;								// 現在の回転量を計算している
-		Scl *= nowTime;								// 現在の拡大率を計算している
+	//	Pos *= nowTime;								// 現在の移動量を計算している
+	//	Rot *= nowTime;								// 現在の回転量を計算している
+	//	Scl *= nowTime;								// 現在の拡大率を計算している
 
-		// 計算して求めた移動量を現在の移動テーブルXYZに足している＝表示座標を求めている
-		XMStoreFloat3(&g_Camera.pos, nowPos + Pos);
+	//	// 計算して求めた移動量を現在の移動テーブルXYZに足している＝表示座標を求めている
+	//	XMStoreFloat3(&g_Camera.pos, nowPos + Pos);
 
-		// 計算して求めた回転量を現在の移動テーブルに足している
-		XMStoreFloat3(&g_Camera.rot, nowRot + Rot);
+	//	// 計算して求めた回転量を現在の移動テーブルに足している
+	//	XMStoreFloat3(&g_Camera.rot, nowRot + Rot);
 
-		//// 計算して求めた拡大率を現在の移動テーブルに足している
-		//XMStoreFloat3(&g_Camera.scl, nowScl + Scl);
-		//g_Camera.w = TEXTURE_WIDTH * g_Camera.scl.x;
-		//g_Camera.h = TEXTURE_HEIGHT * g_Camera.scl.y;
+	//	//// 計算して求めた拡大率を現在の移動テーブルに足している
+	//	//XMStoreFloat3(&g_Camera.scl, nowScl + Scl);
+	//	//g_Camera.w = TEXTURE_WIDTH * g_Camera.scl.x;
+	//	//g_Camera.h = TEXTURE_HEIGHT * g_Camera.scl.y;
 
 
-		// frameを使て時間経過処理をする
-		g_Camera.time += 1.0f / tbl[nowNo].frame;	// 時間を進めている
-		if ((int)g_Camera.time >= maxNo)			// 登録テーブル最後まで移動したか？
-		{
-			g_Camera.time -= maxNo;				// ０番目にリセットしつつも小数部分を引き継いでいる
-		}
+	//	// frameを使て時間経過処理をする
+	//	g_Camera.time += 1.0f / tbl[nowNo].frame;	// 時間を進めている
+	//	if ((int)g_Camera.time >= maxNo)			// 登録テーブル最後まで移動したか？
+	//	{
+	//		g_Camera.time -= maxNo;				// ０番目にリセットしつつも小数部分を引き継いでいる
+	//	}
 
-		switch ((int)g_Camera.time)
-		{
-		case 2:
-			CameraRotation(XMFLOAT3{ 900.0f, 250.0f, 780.0f }, 400.0f, 1000.0f, 6.0f, 100.0f, 360);
-			break;
-		case 4:
-			g_Camera.up.x -= 0.001f;
-		case 0:
-		case 11:
-			g_MoveCnt++;
-			if (g_MoveCnt + 50 == 360)
-				SetFade(FADE_OUT);
-			break;
-		case 9:
-			g_MoveCnt++;
-			if (g_MoveCnt <= 30)
-			{
-				g_CamAT.pos.x += sin(g_MoveCnt * XM_2PI / 360) * 250;
-				//g_CamAT.pos.y += 5.0f;
-				//g_CamAT.pos.z += cos(g_MoveCnt * XM_2PI / 360) * 150;
-			}
-			else if (g_MoveCnt > 30)
-			{
-				g_CamAT.pos.x += sin(g_MoveCnt * XM_2PI / 360) * 280;
-				//g_CamAT.pos.y -= 5.0f;
-				//g_CamAT.pos.z += cos(g_MoveCnt * XM_2PI / 360) * 150;
-			}
+	//	switch ((int)g_Camera.time)
+	//	{
+	//	case 2:
+	//		CameraRotation(XMFLOAT3{ 900.0f, 250.0f, 780.0f }, 400.0f, 1000.0f, 6.0f, 100.0f, 360);
+	//		break;
+	//	case 4:
+	//		g_Camera.up.x -= 0.001f;
+	//	case 0:
+	//	case 11:
+	//		g_MoveCnt++;
+	//		if (g_MoveCnt + 50 == 360)
+	//			SetFade(FADE_OUT);
+	//		break;
+	//	case 9:
+	//		g_MoveCnt++;
+	//		if (g_MoveCnt <= 30)
+	//		{
+	//			g_CamAT.pos.x += sin(g_MoveCnt * XM_2PI / 360) * 250;
+	//			//g_CamAT.pos.y += 5.0f;
+	//			//g_CamAT.pos.z += cos(g_MoveCnt * XM_2PI / 360) * 150;
+	//		}
+	//		else if (g_MoveCnt > 30)
+	//		{
+	//			g_CamAT.pos.x += sin(g_MoveCnt * XM_2PI / 360) * 280;
+	//			//g_CamAT.pos.y -= 5.0f;
+	//			//g_CamAT.pos.z += cos(g_MoveCnt * XM_2PI / 360) * 150;
+	//		}
 
-			if (g_MoveCnt + 50 == 360)
-				SetFade(FADE_OUT);
-			break;
-		case 6:
-			g_MoveCnt++;
-			if (g_MoveCnt + 50 == 899)
-				SetFade(FADE_OUT);
-			break;
-		case 3: 
-			g_Camera.up.x = 0.2f;
-			InitCamGrobal();
-			break;
-		case 5: 
-			g_Camera.up.x = 0.0f;
-		case 7:
-		case 10:
-		case 12:
-			InitCamGrobal();
-			break;
+	//		if (g_MoveCnt + 50 == 360)
+	//			SetFade(FADE_OUT);
+	//		break;
+	//	case 6:
+	//		g_MoveCnt++;
+	//		if (g_MoveCnt + 50 == 899)
+	//			SetFade(FADE_OUT);
+	//		break;
+	//	case 3: 
+	//		g_Camera.up.x = 0.2f;
+	//		InitCamGrobal();
+	//		break;
+	//	case 5: 
+	//		g_Camera.up.x = 0.0f;
+	//	case 7:
+	//	case 10:
+	//	case 12:
+	//		InitCamGrobal();
+	//		break;
 
-		default:
-			break;
-		}
+	//	default:
+	//		break;
+	//	}
 
-	}
+	//}
 
 	if (GetKeyboardPress(DIK_Z))
 	{// 視点旋回「左」
@@ -397,8 +397,8 @@ void UpdateCamera(void)
 
 
 #ifdef _DEBUG	// デバッグ情報を表示する
-	//PrintDebugProc("Camera Pos X:%f,Y:%d,Z:%f UP x:%f y:%f z:%f", g_Camera.pos.x, g_Camera.pos.y, g_Camera.pos.z,
-	//															g_Camera.up.x, g_Camera.up.y, g_Camera.up.z);
+	PrintDebugProc("Camera Pos X:%f,Y:%f,Z:%f UP x:%f y:%f z:%f", g_Camera.pos.x, g_Camera.pos.y, g_Camera.pos.z,
+																g_Camera.up.x, g_Camera.up.y, g_Camera.up.z);
 
 	if (GetKeyboardPress(DIK_LEFT))
 	{	// 左へ移動
