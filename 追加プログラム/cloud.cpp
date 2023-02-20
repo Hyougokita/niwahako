@@ -66,7 +66,7 @@ XMFLOAT3 finalCloudPos = XMFLOAT3(chimneyPos.x + 100.0f, chimneyPos.y + 300.0f, 
 
 
 //	ƒhƒA‚ÌˆÊ’u
-XMFLOAT3 doorPos = XMFLOAT3(50.0f, 0.0f, 0.0f);
+XMFLOAT3 doorPos = XMFLOAT3(1000.0f, 100.0f, 800.0f);
 
 //
 

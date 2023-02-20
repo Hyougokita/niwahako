@@ -395,7 +395,7 @@ void Draw(void)
 		//pos.y = 0.0f;			// カメラ酔いを防ぐためにクリアしている
 
 		// カメラ注視点の設定
-		//GetCamera()->at = pos;
+		GetCamera()->at = pos;
 
 		SetCamera();
 

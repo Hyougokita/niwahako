@@ -165,6 +165,7 @@ void SetBlendState(BLEND_MODE bm)
 	}
 }
 
+// カリングモードの切り替え
 void SetCullingMode(CULL_MODE cm)
 {
 	switch (cm)
@@ -243,7 +244,7 @@ void SetAlphaTestEnable(BOOL flag)
 		blendState->Release();
 }
 
-
+//2D描画への切り替え
 void SetWorldViewProjection2D( void )
 {
 	XMMATRIX world;
@@ -260,7 +261,7 @@ void SetWorldViewProjection2D( void )
 	GetDeviceContext()->UpdateSubresource(g_ProjectionBuffer, 0, NULL, &worldViewProjection, 0, 0);
 }
 
-
+//3D描画への切り替え
 void SetWorldMatrix( XMMATRIX *WorldMatrix )
 {
 	XMMATRIX world;
